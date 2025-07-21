@@ -1,0 +1,70 @@
+/* Smooth Theme Transition with CSS */
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body, header, .skill-category, .project-card, .contact-form {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animation Classes */
+.slide-in-left {
+    animation: slideInLeft 1s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.slide-in-right {
+    animation: slideInRight 1s ease-out forwards;
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.delay-2 {
+    animation-delay: 0.6s;
+}
+
+.delay-3 {
+    animation-delay: 0.9s;
+}
+
+/* Keyframes */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
