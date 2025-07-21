@@ -86,6 +86,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    text-align: justify;    
 }
 
 /* Update card backgrounds */
@@ -211,7 +212,7 @@ header {
 
 header.scrolled {
     padding: 10px 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--card-bg);
 }
 
 header .container {
@@ -328,6 +329,7 @@ nav ul li a:hover::after {
 .about-content {
     display: flex;
     align-items: center;
+    text-align: justify;
     gap: 50px;
 }
 

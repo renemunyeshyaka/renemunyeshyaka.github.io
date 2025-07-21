@@ -2,53 +2,53 @@
 const projects = [
     {
         title: "RESTful-APIs-in-React",
-        description: "RESTful APIs in React | making HTTP requests (such as GET, POST, PUT, DELETE)",
-        tags: ["React", "Node.js", "CRUD API"],
-        image: "assets/projects/RESTful-APIs-in-React.jpg",
+        description: "RESTful APIs in React | making HTTP requests (such as GET, POST, PUT, DELETE). This approach enables React applications to dynamically interact with backend services and create interactive, data-driven user interfaces.",
+        tags: ["React", "Node.js", "CRUD API", "Cypress"],
+        image: "assets/projects/RESTful-APIs-in-React.webp",
         github: "https://github.com/renemunyeshyaka/RESTful-APIs-in-React",
-        liveDemo: "https://RESTful-APIs-in-React-demo.renemunyeshyaka.com"
+        liveDemo: "#"
     },
     {
         title: "spring-security-user-registration-with-email-validation",
         description: "Spring Security User Registration with Email Validation involves creating a secure user registration process where users sign up with their email addresses.",
         tags: ["Spring Boot", "Spring Tool Suite (STS)", "Mail", "Login", "Registration", "Personolized user profiles"],
-        image: "assets/projects/user_profile.jpg",
+        image: "assets/projects/spring_mailV.webp",
         github: "https://github.com/renemunyeshyaka/spring-security-user-registration-with-email-validation",
-        liveDemo: "https://spring.renemunyeshyaka.com"
+        liveDemo: "#"
     },
     {
-        title: "CurrencyConverterProjects",
-        description: "CurrencyConverter Projects with Java involve developing applications that convert amounts between different currencies based on current exchange rates.",
-        tags: ["Java", "JAVA CurrencyConverter", "Currency", "Converter" , "features", "Classes", "methods"],
-        image: "assets/projects/CurrencyConverter.jpg",
-        github: "https://github.com/renemunyeshyaka/CurrencyConverterProjects",
-        liveDemo: "https://CurrencyConverter.renemunyeshyaka.com"
+        title: "The Swedish Open University, or Öppett Sverge Universitetet",
+        description: "The Öppett Sverge Universitetet in Swedish, is a distance learning institution that provides flexible and accessible higher education to students in Sweden and all over the world. It is registered in Sweden with organizational number 559401-8557.",
+        tags: ["Short Courses", "undergraduate", "Postgraduate", "PhD Programmes"],
+        image: "assets/projects/Swedish Open University.webp",
+        github: "https://github.com/renemunyeshyaka/SWEDISH-OPEN-UNIVERSITY",
+        liveDemo: "https://swedishopenuniversity.se/"
     },
     {
         title: "user_authentication",
         description: "A User Authentication Module with Node.js provides essential functionalities such as user registration, login, password reset, and password change.",
         tags: ["Vue.js", "Spoonacular API", "Vuex", "CSS Grid"],
-        image: "assets/projects/user_authentication.jpg",
+        image: "assets/projects/user_authentication.webp",
         github: "https://github.com/renemunyeshyaka/user_authentication",
-        liveDemo: "https://user_authentication.renemunyeshyaka.com"
+        liveDemo: "#"
     },
 
     {
-        title: "Django-API",
-        description: "Create, Read, Update, and Delete (CRUD) API + Consumer API, with Django",
-        tags: ["Django", "python", "CRUD API", "Json", "+", "Consumer API"],
-        image: "assets/projects/Django-API.jpg",
-        github: "https://github.com/renemunyeshyaka/Django-API/",
-        liveDemo: "https://Django-API.renemunyeshyaka.com"
+        title: "BUHORO-TRADING-RWANDA-BTR-",
+        description: "Buhoro Trading Rwanda (BTR) LTD is a company which is specialised in imports and exports of high-quality edible, non-alcoholic beverage and hygienic products.",
+        tags: ["Products", "Management", "Products", "Logistics", "Sales"],
+        image: "assets/projects/BUHORO-TRADING-RWANDA-BTR.webp",
+        github: "https://github.com/renemunyeshyaka/BUHORO-TRADING-RWANDA-BTR-",
+        liveDemo: "https://buhorotr.rw/"
     },
     
     {
         title: "Portfolio Website",
         description: "A responsive portfolio website built with HTML, CSS, and JavaScript to showcase projects and skills with smooth animations and clean design.",
         tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-        image: "assets/projects/portfolio.jpg",
-        github: "renemunyeshyaka.github.io",
-        liveDemo: "https://renemunyeshyaka.dev"
+        image: "assets/projects/portfolio.webp",
+        github: "https://github.com/renemunyeshyaka/renemunyeshyaka.github.io",
+        liveDemo: "https://renemunyeshyaka.github.io/"
     }
 ];
 
