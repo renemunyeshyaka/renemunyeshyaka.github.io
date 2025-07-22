@@ -1,5 +1,24 @@
 // Sample projects data
 const projects = [
+    
+    {
+        title: "Portfolio Website",
+        description: "A responsive portfolio website built with HTML, CSS, and JavaScript to showcase projects and skills with smooth animations and clean design.",
+        tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+        image: "assets/projects/portfolio.webp",
+        github: "https://github.com/renemunyeshyaka/renemunyeshyaka.github.io",
+        liveDemo: "https://renemunyeshyaka.github.io/"
+    },
+
+    {
+        title: "FinancialApp",
+        description: "FinancialApp is a user-friendly application designed to help you manage your finances seamlessly. It offers features such as expense tracking, budget planning, and financial insights to help you make informed decisions and achieve your financial goals.",
+        tags: ["Digital", "Strategy", "Analytics", "HTML", "JavaScript", "CSS"],
+        image: "assets/projects/FinancialApp.webp",
+        github: "https://github.com/renemunyeshyaka/FinancialApp",
+        liveDemo: "https://renemunyeshyaka.github.io/FinancialApp/"
+    },
+
     {
         title: "RESTful-APIs-in-React",
         description: "RESTful APIs in React | making HTTP requests (such as GET, POST, PUT, DELETE). This approach enables React applications to dynamically interact with backend services and create interactive, data-driven user interfaces.",
@@ -16,6 +35,15 @@ const projects = [
         github: "https://github.com/renemunyeshyaka/spring-security-user-registration-with-email-validation",
         liveDemo: "#"
     },
+  /*   {
+        title: "The Swedish Open University, or Öppett Sverge Universitetet",
+        description: "The Öppett Sverge Universitetet in Swedish, is a distance learning institution that provides flexible and accessible higher education to students in Sweden and all over the world. It is registered in Sweden with organizational number 559401-8557.",
+        tags: ["Short Courses", "undergraduate", "Postgraduate", "PhD Programmes"],
+        image: "assets/projects/Swedish Open University.webp",
+        github: "https://github.com/renemunyeshyaka/SWEDISH-OPEN-UNIVERSITY",
+        liveDemo: "https://swedishopenuniversity.se/"
+    }, */
+
     {
         title: "The Swedish Open University, or Öppett Sverge Universitetet",
         description: "The Öppett Sverge Universitetet in Swedish, is a distance learning institution that provides flexible and accessible higher education to students in Sweden and all over the world. It is registered in Sweden with organizational number 559401-8557.",
@@ -24,32 +52,26 @@ const projects = [
         github: "https://github.com/renemunyeshyaka/SWEDISH-OPEN-UNIVERSITY",
         liveDemo: "https://swedishopenuniversity.se/"
     },
-    {
-        title: "user_authentication",
-        description: "A User Authentication Module with Node.js provides essential functionalities such as user registration, login, password reset, and password change.",
-        tags: ["Vue.js", "Spoonacular API", "Vuex", "CSS Grid"],
-        image: "assets/projects/user_authentication.webp",
-        github: "https://github.com/renemunyeshyaka/user_authentication",
-        liveDemo: "#"
-    },
 
     {
+        title: "hotelMngmnt",
+        description: "This website can be yours. I designed the template using HTML, CSS, and JavaScript to enhance its appearance. As humans, we have the ability to create, respond to your needs, satisfy your customers, and attract positive attention to your business.",
+        tags: ["HTML", "JavaScript", "CSS", "Food Service", "Refreshment", "Security"],
+        image: "assets/projects/hotelMngmnt.webp",
+        github: "https://github.com/renemunyeshyaka/hotelMngmnt",
+        liveDemo: "https://renemunyeshyaka.github.io/hotelMngmnt/"
+    }
+
+   /*  {
         title: "BUHORO-TRADING-RWANDA-BTR-",
         description: "Buhoro Trading Rwanda (BTR) LTD is a company which is specialised in imports and exports of high-quality edible, non-alcoholic beverage and hygienic products.",
         tags: ["Products", "Management", "Products", "Logistics", "Sales"],
         image: "assets/projects/BUHORO-TRADING-RWANDA-BTR.webp",
         github: "https://github.com/renemunyeshyaka/BUHORO-TRADING-RWANDA-BTR-",
         liveDemo: "https://buhorotr.rw/"
-    },
+    } */
+
     
-    {
-        title: "Portfolio Website",
-        description: "A responsive portfolio website built with HTML, CSS, and JavaScript to showcase projects and skills with smooth animations and clean design.",
-        tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-        image: "assets/projects/portfolio.webp",
-        github: "https://github.com/renemunyeshyaka/renemunyeshyaka.github.io",
-        liveDemo: "https://renemunyeshyaka.github.io/"
-    }
 ];
 
 // Function to render projects
