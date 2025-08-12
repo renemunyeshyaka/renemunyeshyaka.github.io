@@ -1,5 +1,15 @@
 // Sample projects data
 const projects = [
+
+    {
+        title: "TrusterLabs",
+        description: "Truster Labs is a company dedicated to providing innovative cybersecurity solutions that help businesses protect their digital assets. Their services focus on enhancing security, detecting threats, and ensuring data integrity through advanced technology and expert insights.",
+        tags: ["CyberSecurity", "Solutions", "Businesses", "Digital assets"],
+        image: "assets/projects/TrusterLabs.webp",
+        github: "https://github.com/renemunyeshyaka/TrusterLabs",
+        liveDemo: "https://trusterlabs.com/"
+    },
+
     
     {
         title: "Portfolio Website",
@@ -51,17 +61,9 @@ const projects = [
         image: "assets/projects/Swedish Open University.webp",
         github: "https://github.com/renemunyeshyaka/SWEDISH-OPEN-UNIVERSITY",
         liveDemo: "https://swedishopenuniversity.se/"
-    },
-
-    {
-        title: "hotelMngmnt",
-        description: "This website can be yours. I designed the template using HTML, CSS, and JavaScript to enhance its appearance. As humans, we have the ability to create, respond to your needs, satisfy your customers, and attract positive attention to your business.",
-        tags: ["HTML", "JavaScript", "CSS", "Food Service", "Refreshment", "Security"],
-        image: "assets/projects/hotelMngmnt.webp",
-        github: "https://github.com/renemunyeshyaka/hotelMngmnt",
-        liveDemo: "https://renemunyeshyaka.github.io/hotelMngmnt/"
     }
 
+    
    /*  {
         title: "BUHORO-TRADING-RWANDA-BTR-",
         description: "Buhoro Trading Rwanda (BTR) LTD is a company which is specialised in imports and exports of high-quality edible, non-alcoholic beverage and hygienic products.",
