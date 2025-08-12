@@ -4,7 +4,7 @@ const projects = [
     {
         title: "TrusterLabs",
         description: "Truster Labs is a company dedicated to providing innovative cybersecurity solutions that help businesses protect their digital assets. Their services focus on enhancing security, detecting threats, and ensuring data integrity through advanced technology and expert insights.",
-        tags: ["CyberSecurity", "Solutions", "Businesses", "Digital assets"],
+        tags: ["Tailwind CSS", "JavaScript", "CSS", "HTML", "CyberSecurity", "Solutions", "Businesses", "Digital assets"],
         image: "assets/projects/TrusterLabs.webp",
         github: "https://github.com/renemunyeshyaka/TrusterLabs",
         liveDemo: "https://trusterlabs.com/"
@@ -14,7 +14,7 @@ const projects = [
     {
         title: "Portfolio Website",
         description: "A responsive portfolio website built with HTML, CSS, and JavaScript to showcase projects and skills with smooth animations and clean design.",
-        tags: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+        tags: ["Java Spring Boot", "React", "Python", "Linux", "HTML5", "CSS3", "JavaScript", "Responsive Design", "Windows Forensics", "SOC Analyst", "Git/Github", "AWS / Openstack", "VM / Docker"],
         image: "assets/projects/portfolio.webp",
         github: "https://github.com/renemunyeshyaka/renemunyeshyaka.github.io",
         liveDemo: "https://renemunyeshyaka.github.io/"
