@@ -7,7 +7,7 @@ const projects = [
         tags: ["Tailwind CSS", "JavaScript", "CSS", "HTML", "CyberSecurity", "Solutions", "Businesses", "Digital assets"],
         image: "assets/projects/TrusterLabs.webp",
         github: "https://github.com/renemunyeshyaka/TrusterLabs",
-        liveDemo: "https://trusterlabs.com/"
+        liveDemo: "https://renemunyeshyaka.github.io/TrusterLabs/"
     },
 
     
