@@ -2,11 +2,11 @@
 const projects = [
 
     {
-        title: "TrusterLabs",
-        description: "Truster Labs is a company dedicated to providing innovative cybersecurity solutions that help businesses protect their digital assets. Their services focus on enhancing security, detecting threats, and ensuring data integrity through advanced technology and expert insights.",
-        tags: ["Tailwind CSS", "JavaScript", "CSS", "HTML", "CyberSecurity", "Solutions", "Businesses", "Digital assets"],
-        image: "assets/projects/TrusterLabs.webp",
-        github: "https://github.com/renemunyeshyaka/TrusterLabs",
+        title: "eLearnPro",
+        description: "eLearnPro: Your all-in-one platform for effective online training and seamless learning. (Highlights both the admin and user experience). The powerful LMS that simplifies corporate training and development. (Professional and targeted)",
+        tags: ["Tailwind CSS", "Java Spring Boot", "JavaScript", "CSS", "HTML", "Payment System", "Solutions", "Businesses", "Digital Signature", "RestFullAPI"],
+        image: "assets/projects/eLeaningPro.webp",
+        github: "https://github.com/renemunyeshyaka/https://github.com/renemunyeshyaka/elearningTrusterLabs",
         liveDemo: "https://renemunyeshyaka.github.io/TrusterLabs/"
     },
 
