@@ -6,8 +6,8 @@ const projects = [
         description: "eLearnPro: Your all-in-one platform for effective online training and seamless learning. (Highlights both the admin and user experience). The powerful LMS that simplifies corporate training and development. (Professional and targeted)",
         tags: ["Tailwind CSS", "Java Spring Boot", "JavaScript", "CSS", "HTML", "Payment System", "Solutions", "Businesses", "Digital Signature", "RestFullAPI"],
         image: "assets/projects/eLeaningPro.webp",
-        github: "https://github.com/renemunyeshyaka/https://github.com/renemunyeshyaka/elearningTrusterLabs",
-        liveDemo: "https://renemunyeshyaka.github.io/TrusterLabs/"
+        github: "https://github.com/renemunyeshyaka/elearning",
+        liveDemo: "#"
     },
 
     
