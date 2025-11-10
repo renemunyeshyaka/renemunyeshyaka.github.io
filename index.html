@@ -13,14 +13,18 @@
     <!-- Header/Navigation -->
     <header>
         <div class="container">
-            <div class="logo">JRM</div>
+            <div class="logo">
+                <span>J</span>
+                <span>R</span>
+                <span>M</span>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#technologies" class="nav-link">Technologies</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -37,24 +41,42 @@
                 </label>
             </div>
         </div>
-        
     </header>
-    
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="slide-in-left">Hi, I'm <span>Jean René MUNYESHYAKA</span></h1>
-                <h2 class="slide-in-right">Software Engineer, SysAdmin and Cybersecurity Enthusiast</h2>
-                <p class="slide-in-left">I build exceptional digital experiences with clean, efficient code</p>
-                <div class="hero-buttons fade-in">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                <div class="hero-text">
+                    <h1 class="slide-in-left">Hi, I'm <span class="highlight">Jean René MUNYESHYAKA</span></h1>
+                    <h2 class="slide-in-right">Software Engineer, SysAdmin and Cybersecurity Enthusiast</h2>
+                    <p class="slide-in-left">I build exceptional digital experiences with clean, efficient code and robust security practices.</p>
+                    <div class="hero-buttons fade-in">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Contact Me</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="images/mydesk_1.webp" alt="Jean René MUNYESHYAKA at work" loading="lazy">
+                        <div class="floating-elements">
+                            <div class="floating-element element-1"><i class="fab fa-java"></i></div>
+                            <div class="floating-element element-2"><i class="fab fa-react"></i></div>
+                            <div class="floating-element element-3"><i class="fab fa-linux"></i></div>
+                            <div class="floating-element element-4"><i class="fas fa-shield-alt"></i></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image fade-in">
-                <img src="images/mydesk_1.webp" alt="Developer illustration" height="100">
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="arrow"></div>
             </div>
         </div>
     </section>
@@ -65,105 +87,138 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="images/profile.webp" alt="Jean René MUNYESHYAKA">
+                    <div class="image-frame">
+                        <img src="images/profile.webp" alt="Jean René MUNYESHYAKA" loading="lazy">
+                        <div class="frame-decoration"></div>
+                    </div>
                 </div>
                 <div class="about-text">
-                    <p>I'm skilled Software Engineer with expertise in developing innovative, efficient, and scalable software solutions. Adept at coding, debugging, and collaborating on complex projects, he is committed to delivering high-quality technology that meets client needs and drives business success.</p>
+                    <p>I'm a skilled Software Engineer with expertise in developing innovative, efficient, and scalable software solutions. Adept at coding, debugging, and collaborating on complex projects, I'm committed to delivering high-quality technology that meets client needs and drives business success.</p>
                     <p>I am an enthusiastic software engineer with experience in developing web and mobile applications since 2020. My expertise lies in JavaScript technologies across the full stack, including Java Spring Boot, React, Node.js, Express, and MongoDB.</p>
                     <p>My approach combines technical expertise with clean code principles and user-focused design. I enjoy solving complex problems and creating efficient, scalable solutions.</p>
                     <p>When I'm not coding, you can find me hiking, reading sci-fi novels, or experimenting with new technologies.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
                     <div class="about-links">
-                        <a href="#" class="btn" download>Download Resume</a>
-                        <a href="https://figma.com/@renemunyeshyaka" class="social-link" target="_blank"><i class="fa-brands fa-figma"></i></a> 
-                        <a href="https://www.linkedin.com/in/jean-ren%C3%A9-munyeshyaka-11782514a/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/renemunyeshyaka" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://x.com/renemunyeshyaka" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://stackoverflow.com/users/20782138/rene" class="social-link" target="_blank"><i class="fab fa-stack-overflow"></i></a>
-                        <a href="https://www.freecodecamp.org/fcc-265d961e-a5c1-4dd8-ac96-9bf83a48fa09" class="social-link" target="_blank"><i class="fa-brands fa-free-code-camp"></i></a>
+                        <a href="#" class="btn btn-primary" download>
+                            <i class="fas fa-download"></i>
+                            Download Resume
+                        </a>
+                        <div class="social-links">
+                            <a href="https://figma.com/@renemunyeshyaka" class="social-link" target="_blank" aria-label="Figma"><i class="fa-brands fa-figma"></i></a> 
+                            <a href="https://www.linkedin.com/in/jean-ren%C3%A9-munyeshyaka-11782514a/" class="social-link" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/renemunyeshyaka" class="social-link" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://x.com/renemunyeshyaka" class="social-link" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://stackoverflow.com/users/20782138/rene" class="social-link" target="_blank" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
+                            <a href="https://www.freecodecamp.org/fcc-265d961e-a5c1-4dd8-ac96-9bf83a48fa09" class="social-link" target="_blank" aria-label="FreeCodeCamp"><i class="fa-brands fa-free-code-camp"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- Technologies Section -->
+    <section id="technologies" class="technologies">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span>React</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>JavaScript</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>HTML / CSS / Thymeleaf</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
-                        </div>
+            <h2 class="section-title">Technologies We Use</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-java"></i>
                     </div>
+                    <h3>Java Spring Boot</h3>
+                    <p>Robust and secure systems are built in Java Spring Boot.</p>
                 </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span>Java Spring Boot</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Python</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>SQL / NoSQL</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
-                        </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-linux"></i>
                     </div>
+                    <h3>Linux</h3>
+                    <p>Open-source, highly customizable, stable and Secure services</p>
                 </div>
-                
-
-                <div class="skill-category">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>PostgreSQL</h3>
+                    <p>Object-relational database management system (ORDMBS).</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fa-brands fa-git-alt"></i>
+                    </div>
+                    <h3>Git</h3>
+                    <p>Track code changes and maintain a comprehensive history of modifications</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React</h3>
+                    <p>Modern frontend library for building interactive user interfaces.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>Server-side JavaScript runtime for scalable network applications.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Versatile programming language for web development, data analysis, and AI.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>MongoDB</h3>
+                    <p>NoSQL database for modern applications with flexible data models.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>AWS</h3>
+                    <p>Comprehensive cloud platform for hosting, storage, and computing.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3>Docker</h3>
+                    <p>Containerization platform for consistent application deployment.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
                     <h3>Cybersecurity</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span>Linux</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>Windows Forensics</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 82%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>SOC Analyst</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
-                        </div>
-                    </div>
+                    <p>Comprehensive security practices and threat protection.</p>
                 </div>
-
-                <div class="skill-category">
-                    <h3>Tools & Others</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span>Git/Github</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>AWS / Openstack</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span>VM / Docker</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 80%"></div></div>
-                        </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-code"></i>
                     </div>
+                    <h3>Spring Security</h3>
+                    <p>Powerful and highly customizable authentication framework.</p>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -174,6 +229,13 @@
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid" id="projects-container">
                 <!-- Projects will be loaded dynamically from projects.js -->
+            </div>
+            <div class="projects-cta">
+                <p>Interested in seeing more of my work?</p>
+                <a href="https://github.com/renemunyeshyaka" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-github"></i>
+                    View All Projects on GitHub
+                </a>
             </div>
         </div>
     </section>
@@ -189,40 +251,56 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>info@coders.org</span>
+                            <div>
+                                <span>Email</span>
+                                <a href="mailto:info@coders.org">info@coders.org</a>
+                            </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>Phone: <a href="tel:+250788620201">+25(0) 788 620 201</a></span>
+                            <div>
+                                <span>Phone</span>
+                                <a href="tel:+250788620201">+25(0) 788 620 201</a>
+                            </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Kigali City, Rwanda</span>
+                            <div>
+                                <span>Location</span>
+                                <span>Kigali City, Rwanda</span>
+                            </div>
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="https://figma.com/@renemunyeshyaka"><i class="fa-brands fa-figma"></i></a>
-                        <a href="https://github.com/renemunyeshyaka"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/jean-ren%C3%A9-munyeshyaka-11782514a/"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://x.com/renemunyeshyaka"><i class="fab fa-twitter"></i></a>
-                        <a href="https://stackoverflow.com/users/20782138/rene"><i class="fab fa-stack-overflow"></i></a>
-                        <a href="https://www.freecodecamp.org/fcc-265d961e-a5c1-4dd8-ac96-9bf83a48fa09"><i class="fa-brands fa-free-code-camp"></i></a>
+                        <a href="https://figma.com/@renemunyeshyaka" aria-label="Figma"><i class="fa-brands fa-figma"></i></a>
+                        <a href="https://github.com/renemunyeshyaka" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/jean-ren%C3%A9-munyeshyaka-11782514a/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/renemunyeshyaka" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://stackoverflow.com/users/20782138/rene" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
+                        <a href="https://www.freecodecamp.org/fcc-265d961e-a5c1-4dd8-ac96-9bf83a48fa09" aria-label="FreeCodeCamp"><i class="fa-brands fa-free-code-camp"></i></a>
                     </div>
                 </div>
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
+                        <i class="fas fa-user"></i>
                     </div>
                     <div class="form-group">
                         <input type="email" name="email" placeholder="Your Email" required>
+                        <i class="fas fa-envelope"></i>
                     </div>
                     <div class="form-group">
                         <input type="text" name="subject" placeholder="Subject">
+                        <i class="fas fa-tag"></i>
                     </div>
                     <div class="form-group">
                         <textarea name="message" placeholder="Your Message" required></textarea>
+                        <i class="fas fa-comment"></i>
                     </div>
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </form>
             </div>
         </div>
@@ -232,12 +310,25 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="copyright">
-                    &copy; <span id="year"></span> Jean René MUNYESHYAKA. All rights reserved.
+                <div class="footer-info">
+                    <div class="logo2">JRM</div>
+                    <p>Building digital solutions with passion and precision.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#technologies">Technologies</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
                 </div>
                 <div class="back-to-top">
-                    <a href="#home"><i class="fas fa-arrow-up"></i></a>
+                    <a href="#home" id="back-to-top">
+                        <i class="fas fa-arrow-up"></i>
+                    </a>
                 </div>
+            </div>
+            <div class="copyright">
+                &copy; <span id="year"></span> Jean René MUNYESHYAKA. All rights reserved.
             </div>
         </div>
     </footer>
