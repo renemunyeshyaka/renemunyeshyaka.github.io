@@ -7,7 +7,7 @@ const projects = [
         tags: ["Spring Boot", "Spring Security", "JWT", "PostgreSQL", "OTP", "Email Service", "CRUD API", "MFA", "User Registration", "Validation", "Verification",  "Authentication", "Transaction"],
         image: "assets/projects/paymentgateway.webp",
         github: "https://github.com/renemunyeshyaka/",
-        liveDemo: "#",
+        liveDemo: "https://github.com/renemunyeshyaka/paymentgateway/",
         featured: true, // Changed to true to show all 6 projects
         category: "Backend"
     },
@@ -38,7 +38,7 @@ const projects = [
         tags: ["Java", "JS", "CRUD API", "PostgreSQL", "Unit Testing", "API Integration"],
         image: "assets/projects/scanandpay.webp",
         github: "https://github.com/renemunyeshyaka/scan_and_pay",
-        liveDemo: "#",
+        liveDemo: "https://github.com/renemunyeshyaka/scan_and_pay",
         featured: true, // Changed to true to show all 6 projects
         category: "Frontend"
     },
@@ -49,7 +49,7 @@ const projects = [
         tags: ["Java Spring Boot", "React", "Tailwind CSS", "Payment System", "Digital Signature", "RESTful API", "MongoDB", "AWS"],
         image: "assets/projects/eLeaningPro.webp",
         github: "https://github.com/renemunyeshyaka/eLearningPro",
-        liveDemo: "#",
+        liveDemo: "https://github.com/renemunyeshyaka/eLearningPro/",
         featured: true,
         category: "Full Stack"
     },
