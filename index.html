@@ -11,6 +11,17 @@
 </head>
 <body>
     <!-- Header/Navigation -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean René MUNYESHYAKA | Software Engineer</title>
+    <meta name="description" content="Portfolio of Jean René MUNYESHYAKA, Software Engineer specializing in full-stack development">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
     <header>
         <div class="container">
             <div class="logo">
@@ -22,14 +33,12 @@
                 <ul>
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#technologies" class="nav-link">Technologies</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="#" class="nav-link" id="loginBtn">Login</a></li>
-
+                    <li><a href="#" class="nav-link login-btn" id="login-btn">Login</a></li>
                 </ul>
-                
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -46,6 +55,27 @@
             </div>
         </div>
     </header>
+
+    <!-- Login Popup Modal -->
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Authentication System</h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <p class="modal-message">Login/Register Authentication system is being implemented. Coming Soon ...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="modal-ok">OK</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">

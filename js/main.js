@@ -7,27 +7,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('nav ul');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
 
     // Close mobile menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
             document.body.style.overflow = '';
         });
     });
 
     // Header scroll effect
-    window.addEventListener('scroll', function() {
+    function handleScroll() {
         const header = document.querySelector('header');
         const backToTop = document.getElementById('back-to-top');
         
-        header.classList.toggle('scrolled', window.scrollY > 50);
+        if (header) {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        }
         
         // Show back to top button
         if (backToTop) {
@@ -37,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update active navigation link
         updateActiveNavLink();
-    });
+    }
+
+    window.addEventListener('scroll', handleScroll);
 
     // Update active navigation link based on scroll position
     function updateActiveNavLink() {
@@ -60,6 +66,61 @@ document.addEventListener('DOMContentLoaded', function() {
             if (link.getAttribute('href') === `#${currentSection}`) {
                 link.classList.add('active');
             }
+        });
+    }
+
+    // Login Modal Functionality
+    const loginBtn = document.getElementById('login-btn');
+    const loginModal = document.getElementById('login-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalOk = document.getElementById('modal-ok');
+    
+    // Open modal when login button is clicked
+    if (loginBtn && loginModal) {
+        loginBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
+    
+    // Close modal functions
+    function closeModal() {
+        if (loginModal) {
+            loginModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+    
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modalOk) {
+        modalOk.addEventListener('click', closeModal);
+    }
+    
+    // Close modal when clicking outside
+    if (loginModal) {
+        loginModal.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                closeModal();
+            }
+        });
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && loginModal && loginModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+    
+    // Prevent modal close when clicking inside modal content
+    const modalContent = document.querySelector('.modal-content');
+    if (modalContent) {
+        modalContent.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
     }
 
@@ -192,54 +253,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Theme toggle functionality
     const themeSwitch = document.getElementById('theme-switch');
-    const currentTheme = localStorage.getItem('theme');
+    
+    if (themeSwitch) {
+        const currentTheme = localStorage.getItem('theme');
 
-    // Check for saved theme preference
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') {
-            themeSwitch.checked = true;
-        }
-    }
-
-    // Theme switch event listener
-    themeSwitch.addEventListener('change', function() {
-        if (this.checked) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            showNotification('Dark mode enabled', 'success');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            showNotification('Light mode enabled', 'success');
-        }
-    });
-
-    // Detect system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !currentTheme) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeSwitch.checked = true;
-        localStorage.setItem('theme', 'dark');
-    }
-
-    // Watch for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) {
-            if (e.matches) {
-                document.documentElement.setAttribute('data-theme', 'dark');
+        // Check for saved theme preference
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
                 themeSwitch.checked = true;
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeSwitch.checked = false;
             }
         }
-    });
+
+        // Theme switch event listener
+        themeSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                showNotification('Dark mode enabled', 'success');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                showNotification('Light mode enabled', 'success');
+            }
+        });
+
+        // Detect system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !currentTheme) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeSwitch.checked = true;
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Watch for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    themeSwitch.checked = true;
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    themeSwitch.checked = false;
+                }
+            }
+        });
+    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return; // Skip empty anchors
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(targetId);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
@@ -290,14 +357,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Observe elements for animation
     document.querySelectorAll('.tech-item, .project-card, .stat').forEach(el => {
-        observer.observe(el);
+        if (el) observer.observe(el);
     });
 
     // Add keyboard navigation
     document.addEventListener('keydown', function(e) {
         // Escape key closes mobile menu
-        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
+        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+            if (hamburger) hamburger.classList.remove('active');
             navMenu.classList.remove('active');
             document.body.style.overflow = '';
         }
@@ -334,7 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error occurred:', e.error);
     });
 
-    // Service Worker registration (optional)
+    // Service Worker registration (optional - remove if not needed)
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
             navigator.serviceWorker.register('/sw.js')
