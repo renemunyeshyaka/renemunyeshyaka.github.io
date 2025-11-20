@@ -480,5 +480,13 @@
 
     <script src="js/projects.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Force dark mode on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        });
+    </script>
+
 </body>
 </html>
