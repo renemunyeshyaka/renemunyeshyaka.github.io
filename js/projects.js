@@ -15,7 +15,7 @@ const projects = [
     {
         title: "Portfolio Website",
         description: "Responsive portfolio website designed to showcase personal projects, creative works, and skills with an engaging, user-friendly interface. It includes smooth animations and a clean, minimalist look that emphasizes clarity and elegance. Built with a focus on performance, fast loading, and accessibility for all users, ensuring an inclusive and enjoyable experience.",
-        tags: ["HTML5", "CSS", "JavaScript", "Responsive Design", "Animation", "Performance", "Accessibility"],
+        tags: [ "Java Spring Boot", "software", "Engineering", "Cybersecurity", "System", "Administration", "Automation", "Bash", "Shell", "Ansible", "Python", "Scripting", "CSS", "JavaScript", "HTML5", "Responsive Design", "Animation", "Performance", "Accessibility"],
         image: "assets/projects/portfolio.webp",
         github: "https://github.com/renemunyeshyaka/renemunyeshyaka.github.io",
         liveDemo: "https://renemunyeshyaka.github.io/",
@@ -23,10 +23,10 @@ const projects = [
         category: "Frontend"
     },
     {
-        title: "FinancialApp",
-        description: "A user-friendly financial management application designed to help users track expenses, plan budgets, and gain valuable financial insights. It features easy-to-navigate dashboards and comprehensive reporting tools that assist users in analyzing their financial habits, identifying spending patterns, and making informed decisions to improve their financial stability and future planning.",
-        tags: ["React", "Node.js", "Express", "MongoDB", "Chart.js", "JWT Auth", "REST API"],
-        image: "assets/projects/FinancialApp.webp",
+        title: "Automated Evaluation System",
+        description: "The Automated Evaluation System ensures fairness by providing unbiased, consistent, and transparent assessments through objective algorithms and standardized criteria. Transparency is crucial because it reveals how decisions are made, reducing opportunities for corruption. Automation helps by making processes consistent and traceable, decreasing human discretion that can lead to corrupt practices.",
+        tags: ["React", "Node.js", "Express", "MongoDB", "Chart.js", "algorithms", "UR-CST", "School of ICT", "AFRETEC", "MasterCard", "JWT Auth", "REST API"],
+        image: "assets/projects/AutoEvaluation.webp",
         github: "https://github.com/renemunyeshyaka/FinancialApp",
         liveDemo: "https://renemunyeshyaka.github.io/FinancialApp/",
         featured: true,
