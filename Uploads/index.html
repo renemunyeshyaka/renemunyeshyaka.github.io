@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -499,6 +499,13 @@
 
     <script src="js/projects.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Force dark mode on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        });
+    </script>
 
 </body>
 </html>

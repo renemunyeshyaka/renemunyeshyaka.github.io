@@ -268,27 +268,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeSwitch = document.getElementById('theme-switch');
     
     if (themeSwitch) {
-        // TEMPORARY: Clear old theme preference to force light mode default
-        // Remove this after first load if needed
-        if (localStorage.getItem('theme') === 'dark' && !sessionStorage.getItem('theme-migrated')) {
-            localStorage.removeItem('theme');
-            sessionStorage.setItem('theme-migrated', 'true');
-        }
-        
         const currentTheme = localStorage.getItem('theme');
 
-        // Check for saved theme preference or set default to light
+        // Check for saved theme preference
         if (currentTheme) {
             document.documentElement.setAttribute('data-theme', currentTheme);
             if (currentTheme === 'dark') {
                 themeSwitch.checked = true;
-            } else {
-                themeSwitch.checked = false;
             }
-        } else {
-            // Set default to light mode
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeSwitch.checked = false;
         }
 
         // Theme switch event listener
@@ -301,6 +288,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.documentElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('theme', 'light');
                 showNotification('Light mode enabled', 'success');
+            }
+        });
+
+        // Detect system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !currentTheme) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeSwitch.checked = true;
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Watch for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    themeSwitch.checked = true;
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    themeSwitch.checked = false;
+                }
             }
         });
     }

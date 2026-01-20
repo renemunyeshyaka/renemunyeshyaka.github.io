@@ -1,39 +1,9 @@
 /* CSS Variables */
 
 
-/* CSS Variables - Light theme as default */
+/* CSS Variables - Dark theme as default */
 :root {
-    /* Light theme colors */
-    --primary-color: #3498db;
-    --primary-dark: #2980b9;
-    --secondary-color: #2c3e50;
-    --secondary-light: #34495e;
-    --accent-color: #e74c3c;
-    --accent-light: #e74c3c;
-    --light-color: #ecf0f1;
-    --light-gray: #e8eaed;
-    --dark-color: #2c3e50;
-    --text-color: #333;
-    --text-light: #7f8c8d;
-    --white: #ffffff;
-    --black: #1a1a1a;
-    --bg-color: #e8ecf0;
-    --card-bg: #ffffff;
-    --border-color: #d0d5db;
-    --footer-bg: #2c3e50;
-    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
-    --gradient-primary: linear-gradient(135deg, #3498db, #2980b9);
-    --gradient-secondary: linear-gradient(135deg, #2c3e50, #34495e);
-    --gradient-accent: linear-gradient(135deg, #e74c3c, #c0392b);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --border-radius: 12px;
-    --border-radius-sm: 8px;
-    --border-radius-lg: 16px;
-}
-
-/* Dark theme colors - only applied when explicitly set */
-[data-theme="dark"] {
+    /* Dark theme colors */
     --primary-color: #3498db;
     --primary-dark: #2980b9;
     --secondary-color: #f8f9fa;
@@ -53,6 +23,36 @@
     --footer-bg: #1a1d23;
     --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.4);
+    --gradient-primary: linear-gradient(135deg, #3498db, #2980b9);
+    --gradient-secondary: linear-gradient(135deg, #2c3e50, #34495e);
+    --gradient-accent: linear-gradient(135deg, #e74c3c, #c0392b);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 16px;
+}
+
+/* Light theme colors - only applied if explicitly set */
+[data-theme="light"] {
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --secondary-color: #2c3e50;
+    --secondary-light: #34495e;
+    --accent-color: #e74c3c;
+    --accent-light: #e74c3c;
+    --light-color: #ecf0f1;
+    --light-gray: #e8eaed;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --text-light: #7f8c8d;
+    --white: #ffffff;
+    --black: #1a1a1a;
+    --bg-color: #e8ecf0;
+    --card-bg: #ffffff;
+    --border-color: #d0d5db;
+    --footer-bg: #2c3e50;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Reset and Base Styles */
@@ -812,26 +812,16 @@ nav ul {
     height: 50px;
     background: var(--card-bg);
     border-radius: 50%;
-    color: var(--primary-color);
+    color: var(--text-color);
     font-size: 1.2rem;
     transition: var(--transition);
     box-shadow: var(--box-shadow);
-}
-
-.social-link svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--primary-color);
 }
 
 .social-link:hover {
     background: var(--primary-color);
     color: var(--white);
     transform: translateY(-3px);
-}
-
-.social-link:hover svg {
-    fill: var(--white);
 }
 
 
