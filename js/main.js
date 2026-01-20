@@ -137,20 +137,33 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.innerHTML = '<div class="loading-spinner"></div> Sending...';
             submitButton.disabled = true;
             
+            // Validate reCAPTCHA v2
+            const captchaResponse = grecaptcha.getResponse();
+            
+            if (!captchaResponse) {
+                showNotification('Please complete the captcha verification.', 'error');
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+            
+            console.log('reCAPTCHA token received:', captchaResponse);
+            
             // Simulate form submission
             setTimeout(() => {
                 // Get form values
-                const formData = new FormData(this);
+                const formData = new FormData(contactForm);
                 const data = Object.fromEntries(formData);
                 
                 // Here you would typically send the data to a server
-                console.log('Form submitted:', data);
+                console.log('Form submitted with reCAPTCHA:', data);
                 
                 // Show success message
                 showNotification('Thank you for your message! I will get back to you soon.', 'success');
                 
-                // Reset form and button
-                this.reset();
+                // Reset form and captcha
+                contactForm.reset();
+                grecaptcha.reset();
                 submitButton.innerHTML = originalText;
                 submitButton.disabled = false;
             }, 2000);

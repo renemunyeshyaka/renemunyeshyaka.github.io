@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
 
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <!-- Google Translate -->
 <div id="google_translate_element"></div>
 <script type="text/javascript">
@@ -438,6 +441,7 @@
                     </div>
                 </div>
                 <form class="contact-form" id="contact-form">
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <i class="fas fa-user"></i>
@@ -454,6 +458,7 @@
                         <textarea name="message" placeholder="Your Message" required></textarea>
                         <i class="fas fa-comment"></i>
                     </div>
+                    <div class="g-recaptcha" data-sitekey="6LeccFAsAAAAABBgnb91DT05_Wgey7AuMy-4oPw-" style="margin: 15px 0; display: flex; justify-content: center;"></div>
                     <button type="submit" class="btn btn-primary">
                         <span>Send Message</span>
                         <i class="fas fa-paper-plane"></i>
