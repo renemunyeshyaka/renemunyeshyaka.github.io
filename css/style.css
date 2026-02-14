@@ -1177,14 +1177,26 @@ footer {
     padding: 60px 0 20px;
 }
 footer p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--white);
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     margin-bottom: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column h4 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 6px;
 }
 
 .footer-info .logo {
@@ -1193,23 +1205,35 @@ footer p {
 }
 
 .footer-info p {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--white);
 }
 
-.footer-links {
+.footer-links,
+.footer-services {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.footer-links a {
-    color: rgba(255, 255, 255, 0.8);
+.footer-links a,
+.footer-services a,
+.footer-contact a {
+    color: var(--white);
     transition: var(--transition);
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-services a:hover,
+.footer-contact a:hover {
     color: var(--white);
     transform: translateX(5px);
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
 }
 
 .back-to-top a {
@@ -1234,7 +1258,7 @@ footer p {
     text-align: center;
     padding-top: 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--white);
 }
 
 /* Animations */
