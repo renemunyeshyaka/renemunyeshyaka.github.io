@@ -444,10 +444,17 @@ header .container {
 
 .logo {
     display: flex;
+    align-items: center;
     gap: 5px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    height: 40px;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+    border-radius: 12px;
+}
 }
 
 .logo2 {
