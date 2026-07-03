@@ -1,510 +1,761 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jean René MUNYESHYAKA | Software Engineer</title>
-    <meta name="description" content="Portfolio of Jean René MUNYESHYAKA, Software Engineer specializing in full-stack development">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kcoders · Jean René MUNYESHYAKA</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- Google reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    body {
+      background-color: #0f0f12;
+      color: #ededee;
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
 
-    <!-- Google Translate -->
-<div id="google_translate_element"></div>
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement(
-      {pageLanguage: 'en', includedLanguages: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
-      'google_translate_element'
-    );
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ----- navigation (minimal) ----- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 15, 18, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .logo span {
+      color: #f97316;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.6);
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-links a.active {
+      color: #f97316;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.6rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* sections */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.8rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #f97316;
+      border-radius: 4px;
+    }
+
+    /* ----- HERO: split with shape ----- */
+    #hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 3rem 0;
+    }
+
+    #hero .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .hero-badge {
+      background: rgba(249, 115, 22, 0.12);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #f97316;
+      align-self: flex-start;
+    }
+
+    #hero h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    #hero h1 .highlight {
+      color: #f97316;
+      position: relative;
+    }
+
+    #hero h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: rgba(249, 115, 22, 0.2);
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    .btn-primary {
+      background: #f97316;
+      color: #0f0f12;
+      font-weight: 600;
+      padding: 0.8rem 2.2rem;
+      border-radius: 60px;
+      transition: all 0.25s;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-primary:hover {
+      background: #fb923c;
+      transform: scale(1.02);
+      box-shadow: 0 12px 30px rgba(249, 115, 22, 0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 500;
+      padding: 0.8rem 2.2rem;
+      border-radius: 60px;
+      transition: all 0.25s;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn-outline:hover {
+      border-color: #f97316;
+      background: rgba(249, 115, 22, 0.05);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-shape {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.2), transparent 70%);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-shape .inner-icon {
+      font-size: 7rem;
+      color: rgba(249, 115, 22, 0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-18px); }
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      animation: bounce 2.4s infinite;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ----- about: card style ----- */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 3rem;
+      align-items: stretch;
+    }
+
+    .about-card {
+      background: #1a1a1f;
+      border-radius: 28px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .about-card p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    .stat-item {
+      background: #1a1a1f;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .stat-item:hover {
+      border-color: rgba(249, 115, 22, 0.15);
+    }
+
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #f97316;
+      line-height: 1;
+      min-width: 4rem;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+    }
+
+    /* ----- services : cards with left accent ----- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .service-card {
+      background: #1a1a1f;
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      border-left: 4px solid #f97316;
+      transition: all 0.25s;
+    }
+
+    .service-card:hover {
+      background: #22222a;
+      transform: translateY(-4px);
+    }
+
+    .service-card i {
+      font-size: 1.8rem;
+      color: #f97316;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-card p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.92rem;
+    }
+
+    /* ----- tech: badges grid ----- */
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      justify-content: center;
+      padding: 1rem 0 0.5rem;
+    }
+
+    .tech-badge {
+      background: #1a1a1f;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.6rem 1.6rem;
+      border-radius: 60px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.2s;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .tech-badge i {
+      color: #f97316;
+      font-size: 1.1rem;
+    }
+
+    .tech-badge:hover {
+      border-color: #f97316;
+      background: rgba(249, 115, 22, 0.04);
+      color: #fff;
+    }
+
+    .tech-badge.large {
+      font-size: 1.1rem;
+      padding: 0.7rem 2rem;
+    }
+
+    /* ----- projects : minimal cards ----- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #1a1a1f;
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(249, 115, 22, 0.2);
+      background: #22222a;
+      transform: translateY(-4px);
+    }
+
+    .project-card .icon {
+      font-size: 1.8rem;
+      color: #f97316;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-card p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.92rem;
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-link {
+      color: #f97316;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover {
+      gap: 0.8rem;
+    }
+
+    .projects-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .projects-cta a {
+      color: #f97316;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+      padding-bottom: 0.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .projects-cta a:hover {
+      border-color: #f97316;
+    }
+
+    /* ----- contact: centered ----- */
+    #contact {
+      text-align: center;
+      padding: 4rem 0 5rem;
+    }
+
+    #contact h2 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    #contact .sub {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0.5rem auto 2.5rem;
+    }
+
+    .contact-location {
+      margin-top: 1.8rem;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .contact-location i {
+      color: #f97316;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      #hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content { align-items: center; }
+      .hero-badge { align-self: center; }
+      .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-shape { width: 240px; height: 240px; }
+      .hero-shape .inner-icon { font-size: 4.5rem; }
+      #hero h1 { font-size: 3rem; }
+      #about .about-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .stat-item { flex-direction: column; text-align: center; gap: 0.3rem; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #0f0f12;
+        padding: 1.5rem;
+        border-radius: 20px;
+        position: absolute;
+        top: 68px;
+        right: 1.5rem;
+        width: 200px;
+        border: 1px solid rgba(255,255,255,0.05);
+        gap: 1rem;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      #hero h1 { font-size: 2.4rem; }
+      .section-title { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 1.2rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-outline { justify-content: center; }
+      .hero-shape { width: 180px; height: 180px; }
+      .hero-shape .inner-icon { font-size: 3.5rem; }
+    }
+
+    /* reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
-    <!-- Header/Navigation -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo.webp" alt="KCoders Logo" style="height: 40px; width: auto;" />
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="nav-link">Main</a></li>
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#technologies" class="nav-link">Technologies</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                    <li><a href="#" class="nav-link">Login</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
-            <div class="theme-toggle">
-                <input type="checkbox" id="theme-switch" class="theme-switch">
-                <label for="theme-switch" class="theme-label">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                    <span class="theme-ball"></span>
-                </label>
-            </div>
-        </div>
-    </header>
-
-    <!-- Login Popup Modal -->
-    <div class="modal-overlay" id="login-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Authentication System</h3>
-                <button class="modal-close" id="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-icon">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <p class="modal-message">Login/Register Authentication system is being implemented. Coming Soon ...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="modal-ok">OK</button>
-            </div>
-        </div>
+  <!-- Nav -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="logo">K<span>c</span>oders</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#tech">Tech</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="slide-in-left">Hi, I'm <span class="highlight">Jean René MUNYESHYAKA</span></h1>
-                    <h2 class="slide-in-right">Software Engineer, SysAdmin and Cybersecurity Enthusiast</h2>
-                    <p class="slide-in-left">I build exceptional digital experiences with clean, efficient code and robust security practices.</p>
-                    <div class="hero-buttons fade-in">
-                        <a href="#projects" class="btn btn-primary">
-                            <span>View My Work</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <span>Contact Me</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="image-container">
-                        <img src="images/banner_web.webp" alt="Jean René MUNYESHYAKA at work" loading="lazy">
-                        <div class="floating-elements">
-                            <div class="floating-element element-1"><i class="fab fa-java"></i></div>
-                            <div class="floating-element element-2"><i class="fab fa-react"></i></div>
-                            <div class="floating-element element-3"><i class="fab fa-linux"></i></div>
-                            <div class="floating-element element-4"><i class="fas fa-shield-alt"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <span>Scroll Down</span>
-                <div class="arrow"></div>
-            </div>
+  <!-- Hero -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-code"></i> full-stack · security</div>
+        <h1>Hi, I'm <span class="highlight">Jean René</span> MUNYESHYAKA</h1>
+        <p class="hero-sub">Software Engineer, SysAdmin &amp; Cybersecurity Enthusiast</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary"><i class="fas fa-arrow-right"></i> View Projects</a>
+          <a href="#contact" class="btn-outline"><i class="fas fa-comment"></i> Say Hello</a>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="image-frame">
-                        <img src="images/profile.webp" alt="Jean René MUNYESHYAKA" loading="lazy">
-                        <div class="frame-decoration"></div>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>I'm a skilled Software Engineer with expertise in developing innovative, efficient, and scalable software solutions. Adept at coding, debugging, and collaborating on complex projects, I'm committed to delivering high-quality technology that meets client needs and drives business success.</p>
-                    <p>I am an enthusiastic software engineer with experience in developing web and mobile applications since 2015. My expertise lies in JavaScript technologies across the full stack, including Java Spring Boot, React, Node.js, Express, and MongoDB.</p>
-                    <p>My approach combines technical expertise with clean code principles and user-focused design. I enjoy solving complex problems and creating efficient, scalable solutions.</p>
-                    <p>When I'm not coding, you can find me hiking, reading sci-fi novels, or experimenting with new technologies.</p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">20+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">6+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Client Satisfaction</span>
-                        </div>
-                    </div>
-                    <div class="about-links">
-                        <a href="resume.pdf" class="btn btn-primary" download>
-                            <i class="fas fa-download"></i>
-                            Download Resume
-                        </a>
-                        <div class="social-links">
-                            <a href="https://figma.com/@renemunyeshyaka" class="social-link" target="_blank" aria-label="Figma">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                    <path d="M384 32c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l320 0zM173.7 96c-33 0-59.8 26.8-59.8 59.8 0 21 10.8 39.4 27.2 50.1-16.4 10.7-27.2 29.1-27.2 50.1s10.8 39.5 27.2 50.1c-16.4 10.7-27.2 29.1-27.2 50.1 0 33.1 27.1 59.8 60.1 59.8 33.2 0 60.6-26.9 60.6-60.3l0-55.7c10.6 9.8 24.8 15.8 40.4 15.8l1.1 0c33 0 59.8-26.8 59.8-59.8 0-21-10.8-39.5-27.2-50.1 16.4-10.7 27.2-29.1 27.2-50.1 0-33-26.8-59.8-59.8-59.8L173.7 96zm41.6 219.8l0 39.9c0 22.6-18.6 41-41.3 41-22.4 0-40.7-18.2-40.7-40.5 0-22.3 18.1-40.4 40.3-40.4l41.7 0zm0-100.3l0 80.9-41.7 0c-22.3-.1-40.3-18.2-40.3-40.5 0-22.3 18.1-40.5 40.5-40.5l41.6 0zm60.8 0c22.3 0 40.5 18.1 40.5 40.5s-18.1 40.5-40.5 40.5l-1.1 0c-22.3 0-40.4-18.1-40.4-40.5s18.1-40.5 40.4-40.5l1.1 0zm-60.8-19.3l-41.6 0c-22.3 0-40.5-18.1-40.5-40.4s18.1-40.5 40.5-40.5l41.6 0 0 80.9zm60.8-80.9c22.3 0 40.5 18.1 40.5 40.5s-18.1 40.4-40.5 40.4l-41.5 0 0-80.9 41.5 0z"/>
-                                </svg>
-                            </a> 
-                            <a href="https://www.linkedin.com/in/jean-ren%C3%A9-munyeshyaka-11782514a/" class="social-link" target="_blank" aria-label="LinkedIn">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                    <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm5 170.2l66.5 0 0 213.8-66.5 0 0-213.8zm71.7-67.7a38.5 38.5 0 1 1 -77 0 38.5 38.5 0 1 1 77 0zM317.9 416l0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2-66.4 0z"/>
-                                </svg>
-                            </a>
-                            <a href="https://github.com/renemunyeshyaka" class="social-link" target="_blank" aria-label="GitHub">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                    <path d="M448 96c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320zM265.8 407.7c0-1.8 0-6 .1-11.6 .1-11.4 .1-28.8 .1-43.7 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-26.6-7.5-56.6-7.5-83.2 0 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 9 .1 21.7 .1 30.6 0 4.8 .1 8.6 .1 10 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3-8.4 1.5-11.5-3.7-11.5-8zm-90.5-54.8c-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7 .6 3.9 1.9 .3 1.3-1 2.6-3 3-1.9 .4-3.7-.4-3.9-1.7zm-9.1 3.2c-2.2 .2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7 .9 3.7 2.4 0 1.3-1.5 2.4-3.5 2.4zm-14.3-2.2c-1.9-.4-3.2-1.9-2.8-3.2s2.4-1.9 4.1-1.5c2 .6 3.3 2.1 2.8 3.4-.4 1.3-2.4 1.9-4.1 1.3zm-12.5-7.3c-1.5-1.3-1.9-3.2-.9-4.1 .9-1.1 2.8-.9 4.3 .6 1.3 1.3 1.8 3.3 .9 4.1-.9 1.1-2.8 .9-4.3-.6zm-8.5-10c-1.1-1.5-1.1-3.2 0-3.9 1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1-.9 .6-2.6 0-3.7-1.5zm-6.3-8.8c-1.1-1.3-1.3-2.8-.4-3.5 .9-.9 2.4-.4 3.5 .6 1.1 1.3 1.3 2.8 .4 3.5-.9 .9-2.4 .4-3.5-.6zm-6-6.4c-1.3-.6-1.9-1.7-1.5-2.6 .4-.6 1.5-.9 2.8-.4 1.3 .7 1.9 1.8 1.5 2.6-.4 .9-1.7 1.1-2.8 .4z"/>
-                                </svg>
-                            </a>
-                            <a href="https://x.com/LinuxAndJava" class="social-link" target="_blank" aria-label="Twitter">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                    <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm297.1 84l-103.8 118.6 122.1 161.4-95.6 0-74.8-97.9-85.7 97.9-47.5 0 111-126.9-117.1-153.1 98 0 67.7 89.5 78.2-89.5 47.5 0zM323.3 367.6l-169.9-224.7-28.3 0 171.8 224.7 26.4 0z"/>
-                                </svg>
-                            </a>
-                            <a href="https://stackoverflow.com/users/20782138/rene" class="social-link" target="_blank" aria-label="Stack Overflow">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                    <path d="M291 311l-195.7-41.3-8.2 39.3 195.7 41 8.2-39zm51-87L188.5 95.7 163 126.5 316.5 254.8 342 224zm-31.2 39.7L129.5 179 112.8 215.5 294 300 310.8 263.7zM262.3 32l-32 24 119.3 160.3 32-24-119.3-160.3zm20.5 328l-200 0 0 39.7 200 0 0-39.7zm39.7 80l-279.5 0 0-120-40 0 0 160 359.5 0 0-160-40 0 0 120z"/>
-                                </svg>
-                            </a>
-                            <a href="https://www.freecodecamp.org/fcc-265d961e-a5c1-4dd8-ac96-9bf83a48fa09" class="social-link" target="_blank" aria-label="FreeCodeCamp">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path d="M97.4 96.2c10.4-10.6 16-17.1 16-21.9 0-2.8-1.9-5.5-3.8-7.4-2.4-1.8-5.4-2.8-8.4-2.8-8.5 0-20.9 8.8-35.8 25.7-41.5 47.3-62.7 93.1-61.8 160.6S21 367.3 57.6 412.2c18.8 23.6 33.2 35.8 43.5 35.8 3.2-.3 6.1-1.6 8.4-3.8 1.9-2.8 3.8-5.6 3.8-8.4 0-5.6-3.9-12.2-13.2-20.6-44.5-42.3-67.3-97-67.5-165-.2-61.4 21.6-112.4 64.8-154zM239.6 420.1c.6 .4 .9 .6 .9 .6l-.9-.6zm93.8 .6l.2-.1c-.2 .1-.3 .2-.2 .1zm3.1-158.2c-16.2-4.2 50.4-82.9-68.1-177.2 0 0 15.5 49.4-62.8 159.6-74.3 104.4 23.5 168.7 34 175.2-6.7-4.3-47.4-35.7 9.6-128.6 11-18.3 25.5-34.9 43.5-72.2 0 0 15.9 22.4 7.6 71.1-12.5 73.6 53.8 52.5 54.8 53.5 22.8 26.8-17.7 73.5-21.6 76.6 5.5-3.7 117.7-78 33-188.1-6 6-13.8 34.2-30 30.1zM511 89.7c-14.9-16.9-27.4-25.7-35.9-25.7-3 .1-5.9 1.1-8.4 2.8-1.9 1.9-3.8 4.7-3.8 7.4 0 4.8 5.6 11.3 16 21.9 43.2 41.6 65 92.6 64.8 154.1-.2 68-23 122.6-67.5 165-9.3 8.4-13.2 14.9-13.2 20.6 0 2.7 1.9 5.6 3.8 8.4 2.3 2.2 5.2 3.6 8.4 3.8 10.3 0 24.7-12.1 43.5-35.8 36.6-44.9 53.1-94.4 54.1-161.9S552.5 137 511 89.7z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-shape">
+          <i class="fas fa-crown inner-icon"></i>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>DevOps</h3>
-                    <p>Translating complex technical concepts into business value for non-technical audiences.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile App Development</h3>
-                    <p>Native and cross-platform mobile applications for iOS and Android that engage your users.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Cloud Solutions</h3>
-                    <p>Led cloud migration project that reduced operational costs by 25% and improved system uptime to 99.99%.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Digital Marketing</h3>
-                    <p>Data-driven marketing strategies to increase your online visibility and drive growth.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Comprehensive security solutions to protect your digital assets from threats.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>IT Consulting</h3>
-                    <p>Expert advice to help you make informed technology decisions for your business.</p>
-                </div>
-                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Tailored Training</h3>
-                    <p>Designs the pace and focus of curriculum to address the needs, interests and strength of individuals</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Cisco Training</h3>
-                    <p>Cisco Training provides comprehensive courses to enhance networking skills and achieve industry certifications.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hands-holding-circle"></i>
-                    </div>
-                    <h3>Data Protection Solutions</h3>
-                    <p>We actively conduct ongoing social media campaigns to raise public awareness about the significance of data protection and privacy rights.</p>
-                </div>
-            </div>
+  <!-- About + Stats -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <h2 class="section-title">About Me</h2>
+          <p>I'm a skilled Software Engineer with expertise in developing innovative, efficient, and scalable software solutions. Adept at coding, debugging, and collaborating on complex projects, I'm committed to delivering high-quality technology that meets client needs and drives business success.</p>
+          <p>My approach combines technical expertise with clean code principles and user-focused design. I enjoy solving complex problems and creating efficient, scalable solutions.</p>
+          <p style="color: rgba(255,255,255,0.4); font-style: italic;">When I'm not coding, you can find me hiking, reading sci-fi novels, or experimenting with new technologies.</p>
         </div>
-    </section>
-
-    <!-- Technologies Section -->
-    <section id="technologies" class="technologies">
-        <div class="container">
-            <h2 class="section-title">Technologies We Use</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-java"></i>
-                    </div>
-                    <h3>Java Spring Boot</h3>
-                    <p>Robust and secure systems are built in Java Spring Boot.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-linux"></i>
-                    </div>
-                    <h3>Linux</h3>
-                    <p>Open-source, highly customizable, stable and Secure services</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>PostgreSQL</h3>
-                    <p>Object-relational database management system (ORDMBS).</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-git-alt"></i>
-                    </div>
-                    <h3>Git</h3>
-                    <p>Track code changes and maintain a comprehensive history of modifications</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3>React</h3>
-                    <p>Modern frontend library for building interactive user interfaces.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-node-js"></i>
-                    </div>
-                    <h3>Node.js</h3>
-                    <p>Server-side JavaScript runtime for scalable network applications.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python</h3>
-                    <p>Versatile programming language for web development, data analysis, and AI.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>MongoDB</h3>
-                    <p>NoSQL database for modern applications with flexible data models.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-aws"></i>
-                    </div>
-                    <h3>AWS</h3>
-                    <p>Comprehensive cloud platform for hosting, storage, and computing.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fab fa-docker"></i>
-                    </div>
-                    <h3>Docker</h3>
-                    <p>Containerization platform for consistent application deployment.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Comprehensive security practices and threat protection.</p>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Spring Security</h3>
-                    <p>Powerful and highly customizable authentication framework.</p>
-                </div>
-            </div>
+        <div class="stats-grid reveal">
+          <div class="stat-item"><span class="stat-number">20+</span><span class="stat-label">Projects Completed</span></div>
+          <div class="stat-item"><span class="stat-number">6+</span><span class="stat-label">Years Experience</span></div>
+          <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Client Satisfaction</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid" id="projects-container">
-                <!-- Projects will be loaded dynamically from projects.js -->
-            </div>
-            <div class="projects-cta">
-                <p>Interested in seeing more of my work?</p>
-                <a href="https://github.com/renemunyeshyaka" class="btn btn-outline" target="_blank">
-                    <i class="fab fa-github"></i>
-                    View All Projects on GitHub
-                </a>
-            </div>
-        </div>
-    </section>
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title reveal">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card reveal"><i class="fas fa-cloud"></i><h3>DevOps</h3><p>Translating complex technical concepts into business value for non-technical audiences.</p></div>
+        <div class="service-card reveal"><i class="fas fa-mobile-alt"></i><h3>Mobile App Dev</h3><p>Native and cross-platform mobile applications for iOS and Android that engage your users.</p></div>
+        <div class="service-card reveal"><i class="fas fa-server"></i><h3>Cloud Solutions</h3><p>Cloud migration reduced costs by 25% and improved uptime to 99.99%.</p></div>
+        <div class="service-card reveal"><i class="fas fa-chart-line"></i><h3>Digital Marketing</h3><p>Data-driven strategies to increase your online visibility and drive growth.</p></div>
+        <div class="service-card reveal"><i class="fas fa-shield-alt"></i><h3>Cybersecurity</h3><p>Comprehensive security solutions to protect your digital assets from threats.</p></div>
+        <div class="service-card reveal"><i class="fas fa-chalkboard-teacher"></i><h3>IT Consulting</h3><p>Expert advice to help you make informed technology decisions for your business.</p></div>
+        <div class="service-card reveal"><i class="fas fa-user-graduate"></i><h3>Tailored Training</h3><p>Designs curriculum pace and focus to address individual needs and strengths.</p></div>
+        <div class="service-card reveal"><i class="fas fa-network-wired"></i><h3>Cisco Training</h3><p>Comprehensive courses to enhance networking skills and achieve certifications.</p></div>
+        <div class="service-card reveal"><i class="fas fa-lock"></i><h3>Data Protection</h3><p>Social media campaigns to raise awareness about data protection and privacy rights.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's work together</h3>
-                    <p>I'm currently open to new opportunities and interesting projects. Feel free to reach out if you'd like to collaborate or just say hello!</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <span>Email</span>
-                                <a href="mailto:info@coders.org">info@kcoders.org</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <span>Phone</span>
-                                <a href="tel:+250788620201">+250 788 620 201</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <span>Location</span>
-                                <span>Rwanda</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://figma.com/@renemunyeshyaka" class="social-link" target="_blank" aria-label="Figma">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M384 32c35.3 0 64 28.7 64 64l0 320c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 96C0 60.7 28.7 32 64 32l320 0zM173.7 96c-33 0-59.8 26.8-59.8 59.8 0 21 10.8 39.4 27.2 50.1-16.4 10.7-27.2 29.1-27.2 50.1s10.8 39.5 27.2 50.1c-16.4 10.7-27.2 29.1-27.2 50.1 0 33.1 27.1 59.8 60.1 59.8 33.2 0 60.6-26.9 60.6-60.3l0-55.7c10.6 9.8 24.8 15.8 40.4 15.8l1.1 0c33 0 59.8-26.8 59.8-59.8 0-21-10.8-39.5-27.2-50.1 16.4-10.7 27.2-29.1 27.2-50.1 0-33-26.8-59.8-59.8-59.8L173.7 96zm41.6 219.8l0 39.9c0 22.6-18.6 41-41.3 41-22.4 0-40.7-18.2-40.7-40.5 0-22.3 18.1-40.4 40.3-40.4l41.7 0zm0-100.3l0 80.9-41.7 0c-22.3-.1-40.3-18.2-40.3-40.5 0-22.3 18.1-40.5 40.5-40.5l41.6 0zm60.8 0c22.3 0 40.5 18.1 40.5 40.5s-18.1 40.5-40.5 40.5l-1.1 0c-22.3 0-40.4-18.1-40.4-40.5s18.1-40.5 40.4-40.5l1.1 0zm-60.8-19.3l-41.6 0c-22.3 0-40.5-18.1-40.5-40.4s18.1-40.5 40.5-40.5l41.6 0 0 80.9zm60.8-80.9c22.3 0 40.5 18.1 40.5 40.5s-18.1 40.4-40.5 40.4l-41.5 0 0-80.9 41.5 0z"/>
-                            </svg>
-                        </a> 
-                        <a href="https://www.linkedin.com/in/jean-ren%C3%A9-munyeshyaka-11782514a/" class="social-link" target="_blank" aria-label="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm5 170.2l66.5 0 0 213.8-66.5 0 0-213.8zm71.7-67.7a38.5 38.5 0 1 1 -77 0 38.5 38.5 0 1 1 77 0zM317.9 416l0-104c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9l0 105.8-66.4 0 0-213.8 63.7 0 0 29.2 .9 0c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9l0 117.2-66.4 0z"/>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/renemunyeshyaka" class="social-link" target="_blank" aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M448 96c0-35.3-28.7-64-64-64L64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320zM265.8 407.7c0-1.8 0-6 .1-11.6 .1-11.4 .1-28.8 .1-43.7 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-26.6-7.5-56.6-7.5-83.2 0 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 9 .1 21.7 .1 30.6 0 4.8 .1 8.6 .1 10 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3-8.4 1.5-11.5-3.7-11.5-8zm-90.5-54.8c-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7 .6 3.9 1.9 .3 1.3-1 2.6-3 3-1.9 .4-3.7-.4-3.9-1.7zm-9.1 3.2c-2.2 .2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7 .9 3.7 2.4 0 1.3-1.5 2.4-3.5 2.4zm-14.3-2.2c-1.9-.4-3.2-1.9-2.8-3.2s2.4-1.9 4.1-1.5c2 .6 3.3 2.1 2.8 3.4-.4 1.3-2.4 1.9-4.1 1.3zm-12.5-7.3c-1.5-1.3-1.9-3.2-.9-4.1 .9-1.1 2.8-.9 4.3 .6 1.3 1.3 1.8 3.3 .9 4.1-.9 1.1-2.8 .9-4.3-.6zm-8.5-10c-1.1-1.5-1.1-3.2 0-3.9 1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1-.9 .6-2.6 0-3.7-1.5zm-6.3-8.8c-1.1-1.3-1.3-2.8-.4-3.5 .9-.9 2.4-.4 3.5 .6 1.1 1.3 1.3 2.8 .4 3.5-.9 .9-2.4 .4-3.5-.6zm-6-6.4c-1.3-.6-1.9-1.7-1.5-2.6 .4-.6 1.5-.9 2.8-.4 1.3 .7 1.9 1.8 1.5 2.6-.4 .9-1.7 1.1-2.8 .4z"/>
-                            </svg>
-                        </a>
-                        <a href="https://x.com/LinuxAndJava" class="social-link" target="_blank" aria-label="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                <path d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zm297.1 84l-103.8 118.6 122.1 161.4-95.6 0-74.8-97.9-85.7 97.9-47.5 0 111-126.9-117.1-153.1 98 0 67.7 89.5 78.2-89.5 47.5 0zM323.3 367.6l-169.9-224.7-28.3 0 171.8 224.7 26.4 0z"/>
-                            </svg>
-                        </a>
-                        <a href="https://stackoverflow.com/users/20782138/rene" class="social-link" target="_blank" aria-label="Stack Overflow">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                <path d="M291 311l-195.7-41.3-8.2 39.3 195.7 41 8.2-39zm51-87L188.5 95.7 163 126.5 316.5 254.8 342 224zm-31.2 39.7L129.5 179 112.8 215.5 294 300 310.8 263.7zM262.3 32l-32 24 119.3 160.3 32-24-119.3-160.3zm20.5 328l-200 0 0 39.7 200 0 0-39.7zm39.7 80l-279.5 0 0-120-40 0 0 160 359.5 0 0-160-40 0 0 120z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.freecodecamp.org/fcc-265d961e-a5c1-4dd8-ac96-9bf83a48fa09" class="social-link" target="_blank" aria-label="FreeCodeCamp">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                <path d="M97.4 96.2c10.4-10.6 16-17.1 16-21.9 0-2.8-1.9-5.5-3.8-7.4-2.4-1.8-5.4-2.8-8.4-2.8-8.5 0-20.9 8.8-35.8 25.7-41.5 47.3-62.7 93.1-61.8 160.6S21 367.3 57.6 412.2c18.8 23.6 33.2 35.8 43.5 35.8 3.2-.3 6.1-1.6 8.4-3.8 1.9-2.8 3.8-5.6 3.8-8.4 0-5.6-3.9-12.2-13.2-20.6-44.5-42.3-67.3-97-67.5-165-.2-61.4 21.6-112.4 64.8-154zM239.6 420.1c.6 .4 .9 .6 .9 .6l-.9-.6zm93.8 .6l.2-.1c-.2 .1-.3 .2-.2 .1zm3.1-158.2c-16.2-4.2 50.4-82.9-68.1-177.2 0 0 15.5 49.4-62.8 159.6-74.3 104.4 23.5 168.7 34 175.2-6.7-4.3-47.4-35.7 9.6-128.6 11-18.3 25.5-34.9 43.5-72.2 0 0 15.9 22.4 7.6 71.1-12.5 73.6 53.8 52.5 54.8 53.5 22.8 26.8-17.7 73.5-21.6 76.6 5.5-3.7 117.7-78 33-188.1-6 6-13.8 34.2-30 30.1zM511 89.7c-14.9-16.9-27.4-25.7-35.9-25.7-3 .1-5.9 1.1-8.4 2.8-1.9 1.9-3.8 4.7-3.8 7.4 0 4.8 5.6 11.3 16 21.9 43.2 41.6 65 92.6 64.8 154.1-.2 68-23 122.6-67.5 165-9.3 8.4-13.2 14.9-13.2 20.6 0 2.7 1.9 5.6 3.8 8.4 2.3 2.2 5.2 3.6 8.4 3.8 10.3 0 24.7-12.1 43.5-35.8 36.6-44.9 53.1-94.4 54.1-161.9S552.5 137 511 89.7z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <form class="contact-form" id="contact-form">
-                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="subject" placeholder="Subject">
-                        <i class="fas fa-tag"></i>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                        <i class="fas fa-comment"></i>
-                    </div>
-                    <div class="g-recaptcha" data-sitekey="6LeKclAsAAAAAPwPnvpuqsMWAkkOKFhTQK7W1YiF" style="margin: 15px 0; display: flex; justify-content: center;"></div>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+  <!-- Technologies (badges) -->
+  <section id="tech">
+    <div class="container">
+      <h2 class="section-title reveal" style="margin-bottom: 1.8rem;">Technologies We Use</h2>
+      <div class="tech-grid reveal">
+        <span class="tech-badge large"><i class="fab fa-java"></i> Java Spring Boot</span>
+        <span class="tech-badge large"><i class="fab fa-linux"></i> Linux</span>
+        <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+        <span class="tech-badge"><i class="fab fa-git-alt"></i> Git</span>
+        <span class="tech-badge large"><i class="fab fa-react"></i> React</span>
+        <span class="tech-badge large"><i class="fab fa-node-js"></i> Node.js</span>
+        <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+        <span class="tech-badge"><i class="fas fa-leaf"></i> MongoDB</span>
+        <span class="tech-badge large"><i class="fab fa-aws"></i> AWS</span>
+        <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+        <span class="tech-badge"><i class="fas fa-shield-virus"></i> Cybersecurity</span>
+        <span class="tech-badge"><i class="fas fa-lock"></i> Spring Security</span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info footer-column">
-                    <div class="logo2">JRM</div>
-                    <p>Building digital solutions with passion and precision.</p>
-                    <p>My website showcases my work and interests, highlighting my expertise in software development, technology, and innovation.</p>
-                </div>
-                <div class="footer-links footer-column">
-                    <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#services">Services</a>
-                    <a href="#technologies">Technologies</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-contact footer-column">
-                    <h4>Get in Touch</h4>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@kcoders.org">info@kcoders.org</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
-                    <p><i class="fas fa-clock"></i> Available for freelance & full-time</p>
-                    <div class="back-to-top">
-                        <a href="#home" id="back-to-top" aria-label="Back to top">
-                            <i class="fas fa-arrow-up"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; <span id="year"></span> Jean René MUNYESHYAKA. All rights reserved.
-            </div>
-        </div>
-    </footer>
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-credit-card"></i></div><h3>Pay Gateway System</h3><p>Multi‑auth, secure payments, product catalog, refunds &amp; support.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-user-astronaut"></i></div><h3>Portfolio Website</h3><p>Responsive, minimalist, with smooth animations and high accessibility.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-robot"></i></div><h3>Auto Evaluation System</h3><p>Fair, transparent assessments via objective algorithms and traceable automation.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-qrcode"></i></div><h3>Scan and Pay</h3><p>Secure QR‑based payments with transaction tracking and proof of payment.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h3>eLearnPro</h3><p>LMS with course management, progress tracking, payment &amp; digital signatures.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-university"></i></div><h3>Swedish Open University</h3><p>Distance learning platform with course management and admin dashboards.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="projects-cta reveal">
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> Interested in seeing more? View All Projects on GitHub</a>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/projects.js"></script>
-    <script src="js/main.js"></script>
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container reveal">
+      <h2>Let's work together</h2>
+      <p class="sub">Open to new opportunities and interesting projects. Let's collaborate or just say hello!</p>
+      <a href="mailto:hello@kcoders.org" class="btn-primary" style="font-size: 1.05rem; padding: 0.9rem 2.8rem;"><i class="fas fa-envelope"></i> Get In Touch</a>
+      <div class="contact-location"><i class="fas fa-map-pin"></i> Rwanda</div>
+    </div>
+  </section>
 
+  <!-- JavaScript -->
+  <script>
+    (function() {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+      });
+
+      // reveal observer
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+      reveals.forEach(el => observer.observe(el));
+
+      // active nav
+      const sections = document.querySelectorAll('section[id]');
+      const navAnchors = document.querySelectorAll('.nav-links a');
+      function updateActiveLink() {
+        let current = '';
+        sections.forEach(section => {
+          const top = section.offsetTop - 120;
+          if (window.scrollY >= top) current = section.getAttribute('id');
+        });
+        navAnchors.forEach(a => {
+          a.classList.remove('active');
+          if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        });
+      }
+      window.addEventListener('scroll', updateActiveLink);
+      window.addEventListener('load', updateActiveLink);
+    })();
+  </script>
 </body>
 </html>

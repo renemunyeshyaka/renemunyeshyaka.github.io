@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: kcoders-db
+    environment:
+      POSTGRES_DB: kcoders_portal
+      POSTGRES_USER: kcoders
+      POSTGRES_PASSWORD: your_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kcoders -d kcoders_portal"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kcoders-api
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: kcoders
+      DB_PASSWORD: your_password
+      DB_NAME: kcoders_portal
+      JWT_SECRET: your_super_secret_key_change_in_production
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      FROM_EMAIL: ${FROM_EMAIL}
+      TOTP_ISSUER: Kcoders.org
+      STORAGE_PATH: /app/storage
+      PORT: 5003
+      FRONTEND_URL: http://localhost:3003
+    ports:
+      - "5003:5003"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - storage_data:/app/storage
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kcoders-frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:5003
+    ports:
+      - "3003:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  storage_data:

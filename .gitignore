@@ -1,0 +1,55 @@
+# === Dependencies ===
+node_modules/
+vendor/
+
+# === Environment ===
+.env
+.env.local
+.env.production
+
+# === Build outputs ===
+dist/
+build/
+.next/
+out/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# === Go ===
+*.test
+*.out
+*.testbin
+/kcoders-portal/backend/tmp/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# === OS ===
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+
+# === Portfolio uploads (generated copies) ===
+portfolio/Uploads/
+
+# === Storage (runtime data) ===
+storage/uploads/*
+storage/backups/*
+!storage/uploads/.gitkeep
+!storage/backups/.gitkeep
+
+# === Docker ===
+docker-compose.override.yml
+
+# === Misc ===
+*.bak
+*.tmp

@@ -1,0 +1,86 @@
+# Kcoders Client Portal — Requirements Document (Revised)
+
+## Overview
+A secure client portal for managing software development projects, service agreements, milestone-based payments, and client communication. This system replaces the previous courses/LMS model with a full-service software development consulting platform.
+
+## Core Services Offered
+1. **Custom Web Development** — Full-stack web applications (React + Spring Boot/Go)
+2. **Mobile App Development** — Cross-platform mobile apps (React Native)
+3. **API Development & Integration** — REST APIs, third-party integrations, microservices
+4. **DevOps & Cloud Infrastructure** — CI/CD pipelines, Docker/K8s, AWS/Azure setup
+5. **Cybersecurity Consulting** — Security audits, penetration testing, secure architecture
+6. **Code Auditing & QA** — Code review, technical debt analysis, best practices
+7. **Technical Architecture Design** — System design, database modeling, scalability planning
+
+## Service Package Tiers
+Each service has three tiers:
+| Tier | Description |
+|------|-------------|
+| **Basic** | Standard implementation with essential features |
+| **Standard** | Full implementation with custom features + support |
+| **Enterprise** | Complete solution with dedicated team, SLA, maintenance |
+
+## User Features
+- Register/Login with email activation link
+- Multi-factor authentication (TOTP on every login)
+- Client dashboard with project overview & progress tracking
+- Browse available development services with package tiers
+- Fill project brief (name, email, WhatsApp, project description, budget range)
+- Receive email with proposal & service agreement
+- Milestone-based payment via Mobile Money: +250788620201
+- Service delivery tracking with milestone checkpoints
+- Support ticket system for ongoing communication
+- "Remember this device" option for OTP (30-day trusted device)
+- Password strength meter & profile completion progress
+
+## Admin Features
+- Dual dashboard (Client view + Admin view)
+- Client management (view, edit, delete, activate/suspend, bulk CSV import/export)
+- Service management (add, edit, archive, package tiers: Basic, Standard, Enterprise)
+- Project allotment (assign developers, set milestones, sprint planning)
+- Pricing management (RWF for Rwanda, USDT for international, project-based quotes)
+- Payment verification (confirm/reject milestone payments with timeline)
+- Document & deliverable review (uploaded specs, designs, source code)
+- Visit counter from a specific date/time
+- Revenue reports, project trends, export CSV/PDF
+- Client activity log, flag high-value prospects
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Backend | Go (Gin framework) |
+| Frontend | React with TypeScript, Vite (Build tool), React Router (Routing), Axios (HTTP client) |
+| Database | PostgreSQL 15+ |
+| Auth | Email activation + TOTP (time-based OTP) |
+| File Storage | Local filesystem (migrated to VPS later) |
+| Emails | SMTP (Gmail) |
+
+## Key Database Tables
+- **users** — Client & admin accounts with TOTP secrets
+- **services** — Development service catalog with package tier pricing (JSONB)
+- **projects** — Client projects linked to services with status tracking
+- **milestones** — Milestone payments with 2-hour payment deadline
+- **tickets** — Support tickets linked to projects
+
+## Payment Workflow
+1. Client submits project brief with requirements
+2. Admin reviews and sends proposal with milestone breakdown
+3. Client accepts proposal → project becomes active
+4. Each milestone paid before work begins (2-hour payment window)
+5. Admin verifies payment manually via Mobile Money statement
+6. Work delivered → Client reviews → Next milestone
+
+## Pricing Model
+- **Rwanda clients:** RWF pricing
+- **International clients:** USDT pricing (via WorldRemit or crypto)
+- **Project-based quotes:** Custom pricing for complex requirements
+
+## Key Differences from Previous LMS System
+| Old (Courses/LMS) | New (Services Portal) |
+|-------------------|----------------------|
+| Courses & batches | Services & package tiers |
+| Enrollment & document upload | Project brief & proposal |
+| Student progress tracking | Milestone delivery tracking |
+| Batch allotment | Developer assignment |
+| Course completion certificates | Project deliverable sign-off |
