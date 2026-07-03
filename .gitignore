@@ -53,5 +53,7 @@ storage/backups/*
 docker-compose.override.yml
 
 # === Misc ===
+redesign.md
+NewRequirements.txt
 *.bak
 *.tmp
