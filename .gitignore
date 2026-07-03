@@ -38,7 +38,9 @@ Thumbs.db
 Desktop.ini
 *.log
 
-# === Portfolio uploads (generated copies) ===
+# === Upload artifacts ===
+Uploads/
+Uploads.zip
 portfolio/Uploads/
 
 # === Storage (runtime data) ===
