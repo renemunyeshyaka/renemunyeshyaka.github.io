@@ -16,12 +16,20 @@ type EmailConfig struct {
 }
 
 func GetEmailConfig() *EmailConfig {
+	fromEmail := os.Getenv("FROM_EMAIL")
+	appName := os.Getenv("APP_NAME")
+	if appName == "" {
+		appName = "Kcoders Portal"
+	}
+	// Format: "App Name" <email@example.com>
+	from := fmt.Sprintf(`"%s" <%s>`, appName, fromEmail)
+
 	return &EmailConfig{
 		SMTPHost: os.Getenv("SMTP_HOST"),
 		SMTPPort: os.Getenv("SMTP_PORT"),
 		User:     os.Getenv("SMTP_USER"),
 		Password: os.Getenv("SMTP_PASSWORD"),
-		From:     os.Getenv("FROM_EMAIL"),
+		From:     from,
 	}
 }
 
