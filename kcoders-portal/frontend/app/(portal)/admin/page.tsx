@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import {
   FiUsers, FiCode, FiGrid, FiDollarSign, FiCheckCircle,
   FiClock, FiShield, FiTrendingUp, FiUserCheck,
-  FiUserX, FiPlus, FiArchive, FiRefreshCw,
+  FiUserX, FiPlus, FiArchive, FiRefreshCw, FiDownload,
   FiMessageSquare, FiSend, FiX, FiBarChart2, FiActivity,
   FiLayers, FiUserPlus,
 } from 'react-icons/fi';
@@ -244,11 +244,18 @@ function StatCard({ icon: Icon, label, value, color }: { icon: any; label: strin
 
 // ==================== Users Tab ====================
 function UsersTab({ users, onToggle, onRefresh }: { users: any[]; onToggle: (id: number) => void; onRefresh: () => void }) {
+  const exportCSV = () => {
+    window.open('/api/admin/users/export/csv', '_blank');
+  };
+
   return (
     <div className="card p-6 animate-fade-in">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-900">User Management</h3>
-        <button onClick={onRefresh} className="btn btn-secondary btn-sm"><FiRefreshCw size={14} /> Refresh</button>
+        <div className="flex gap-2">
+          <button onClick={exportCSV} className="btn btn-secondary btn-sm"><FiDownload size={14} /> Export CSV</button>
+          <button onClick={onRefresh} className="btn btn-secondary btn-sm"><FiRefreshCw size={14} /> Refresh</button>
+        </div>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
@@ -758,6 +765,7 @@ function TicketsTab({ tickets, token, onRefresh }: { tickets: any[]; token: stri
 function AnalyticsTab({ token }: { token: string }) {
   const [visits, setVisits] = useState<any>(null);
   const [revenue, setRevenue] = useState<any>(null);
+  const [activities, setActivities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -766,12 +774,14 @@ function AnalyticsTab({ token }: { token: string }) {
 
   const loadAnalytics = async () => {
     try {
-      const [v, r] = await Promise.all([
+      const [v, r, a] = await Promise.all([
         api.admin.getVisits(token),
         api.admin.getRevenue(token),
+        api.admin.getActivity(token),
       ]);
       setVisits(v);
       setRevenue(r);
+      setActivities(a.activities || []);
     } catch (err) {
       console.error('Failed to load analytics:', err);
     } finally {
@@ -811,9 +821,13 @@ function AnalyticsTab({ token }: { token: string }) {
 
       {/* Revenue */}
       <div className="card p-6">
-        <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-          <FiDollarSign className="text-green-600" /> Revenue Report
-        </h3>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+            <FiDollarSign className="text-green-600" /> Revenue Report
+          </h3>
+          <a href="/api/admin/analytics/revenue/export/csv" target="_blank"
+            className="btn btn-secondary btn-sm"><FiDownload size={14} /> Export CSV</a>
+        </div>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div className="bg-gray-50 rounded-lg p-4">
             <p className="text-sm text-gray-500">Total RWF</p>
@@ -845,6 +859,51 @@ function AnalyticsTab({ token }: { token: string }) {
                   <td className="py-2">{r.currency}</td>
                 </tr>
               ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Client Activity */}
+      <div className="card p-6">
+        <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <FiActivity className="text-purple-600" /> Client Activity Log
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-gray-500 border-b border-gray-200">
+                <th className="pb-3 font-medium">Time</th>
+                <th className="pb-3 font-medium">User</th>
+                <th className="pb-3 font-medium">Action</th>
+                <th className="pb-3 font-medium">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {activities?.map((a: any) => (
+                <tr key={a.id} className="border-b border-gray-100">
+                  <td className="py-2 text-gray-400 text-xs whitespace-nowrap">{a.created_at}</td>
+                  <td className="py-2">
+                    <span className="font-medium">{a.user_name}</span>
+                    <span className="text-gray-400 text-xs ml-1">{a.user_email}</span>
+                  </td>
+                  <td className="py-2">
+                    <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${
+                      a.action === 'login' ? 'bg-blue-100 text-blue-700' :
+                      a.action === 'register' ? 'bg-green-100 text-green-700' :
+                      a.action === 'project_brief' ? 'bg-amber-100 text-amber-700' :
+                      a.action === 'ticket_created' ? 'bg-purple-100 text-purple-700' :
+                      'bg-gray-100 text-gray-600'
+                    }`}>
+                      {a.action.replace('_', ' ')}
+                    </span>
+                  </td>
+                  <td className="py-2 text-gray-600 max-w-xs truncate">{a.details}</td>
+                </tr>
+              ))}
+              {(!activities || activities.length === 0) && (
+                <tr><td colSpan={4} className="py-4 text-center text-gray-400">No activity recorded yet</td></tr>
+              )}
             </tbody>
           </table>
         </div>

@@ -42,6 +42,7 @@ func main() {
 		&models.OTP{},
 		&models.Ticket{},
 		&models.Visit{},
+		&models.ActivityLog{},
 	)
 
 	// Init handlers
@@ -122,6 +123,8 @@ func main() {
 
 			// User management
 			admin.GET("/users", adminHandler.ListUsers)
+			admin.GET("/users/export/csv", adminHandler.ExportUsersCSV)
+			admin.POST("/users/import/csv", adminHandler.ImportUsersCSV)
 			admin.GET("/users/:id", adminHandler.GetUser)
 			admin.PUT("/users/:id/toggle-status", adminHandler.ToggleUserStatus)
 			admin.DELETE("/users/:id", adminHandler.DeleteUser)
@@ -152,6 +155,8 @@ func main() {
 			// Analytics
 			admin.GET("/analytics/visits", adminHandler.GetVisits)
 			admin.GET("/analytics/revenue", adminHandler.GetRevenueReport)
+			admin.GET("/analytics/revenue/export/csv", adminHandler.ExportRevenueCSV)
+			admin.GET("/analytics/activity", adminHandler.GetActivityLog)
 		}
 	}
 

@@ -201,5 +201,8 @@ export const api = {
 
     getRevenue: (token: string, since?: string) =>
       request(`/admin/analytics/revenue${since ? `?since=${since}` : ''}`, { token }),
+
+    getActivity: (token: string) =>
+      request('/admin/analytics/activity', { token }),
   },
 };

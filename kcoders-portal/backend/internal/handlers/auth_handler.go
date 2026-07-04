@@ -91,6 +91,8 @@ func (h *AuthHandler) Register(c *gin.Context) {
 		return
 	}
 
+	utils.LogActivity(h.DB, user.ID, models.ActionRegister, "User registered")
+
 	go func() {
 		utils.SendActivationEmail(req.Email, activationToken)
 	}()
@@ -254,6 +256,8 @@ func (h *AuthHandler) VerifyOTP(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
 		return
 	}
+
+	utils.LogActivity(h.DB, user.ID, models.ActionLogin, "User logged in")
 
 	c.JSON(http.StatusOK, gin.H{
 		"token": token,

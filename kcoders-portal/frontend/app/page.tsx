@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FiArrowRight, FiCode, FiShield, FiStar, FiSmartphone, FiServer, FiCloud, FiExternalLink, FiGithub, FiUser } from 'react-icons/fi';
+import { FiArrowRight, FiCode, FiShield, FiStar, FiSmartphone, FiServer, FiCloud, FiExternalLink, FiGithub, FiUser, FiMonitor, FiBox } from 'react-icons/fi';
 
 const services = [
   { icon: FiCode, title: 'Web Development', desc: 'Full-stack web apps — React, Go, Spring Boot', color: 'from-blue-500 to-indigo-600' },
@@ -22,11 +22,15 @@ const projects = [
   { name: 'Face Recognition Attendance', desc: 'AI-powered attendance system', cat: 'AI/ML' },
   { name: 'QR Code Generator', desc: 'Custom QR code generation API', cat: 'Full Stack' },
   { name: 'Cybersecurity Aptitude Test', desc: 'Security skills assessment platform', cat: 'Security' },
-  { name: 'TrusterLabs', desc: 'Trust & safety verification platform', cat: 'Full Stack' },
-  { name: 'DeepSeek OCR', desc: 'AI document text extraction', cat: 'AI/ML' },
-  { name: 'OPDERwanda', desc: 'Rwanda ops & logistics platform', cat: 'Full Stack' },
-  { name: 'EMEA NetAcad Cup', desc: 'Networking competition platform', cat: 'Full Stack' },
-  { name: 'Awesome AI Apps', desc: 'Curated AI application showcase', cat: 'AI/ML' },
+  { name: 'RSSB Project', desc: 'Automated K8s cluster with CI/CD, monitoring & security hardening', cat: 'DevOps', url: 'RSSB_project-repo' },
+  { name: 'Store Management System', desc: 'Modern store management with inventory, sales, POS & analytics', cat: 'Full Stack' },
+  { name: 'Nicolas in Dubai', desc: 'Travel business website with booking system & user dashboard', cat: 'Full Stack' },
+  { name: 'MNDA Rwanda', desc: 'Bilingual missionary website with secure contact & anti-spam', cat: 'Full Stack' },
+];
+
+const products = [
+  { name: 'LandVal', desc: 'Accurate land valuation for Rwanda using government gazette data & market analysis', url: 'https://landval.kcoders.org/', icon: FiMonitor },
+  { name: 'CV Builder', desc: 'Professional CV & Resume Builder with digital signatures, QR codes & multi-format export', url: 'https://cvbuilder.kcoders.org/', icon: FiBox },
 ];
 
 export default function HomePage() {
@@ -48,7 +52,7 @@ export default function HomePage() {
               From concept to deployment with transparent milestone-based pricing.
             </p>
             <div className="flex justify-center gap-3 flex-wrap">
-              <Link href="/courses" className="inline-flex items-center gap-2 bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-all shadow-xl">
+              <Link href="/services" className="inline-flex items-center gap-2 bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-all shadow-xl">
                 Browse Services <FiArrowRight />
               </Link>
               <Link href="/register" className="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/20 transition-all border border-white/20">
@@ -88,9 +92,10 @@ export default function HomePage() {
                 'Frontend': 'bg-amber-100 text-amber-700',
                 'Security': 'bg-red-100 text-red-700',
                 'AI/ML': 'bg-purple-100 text-purple-700',
+                'DevOps': 'bg-slate-100 text-slate-700',
               };
               return (
-                <a key={p.name} href={`https://github.com/renemunyeshyaka/${p.name.toLowerCase().replace(/\s+/g, '-')}`}
+                <a key={p.name} href={`https://github.com/renemunyeshyaka/${p.url || p.name.toLowerCase().replace(/\s+/g, '-')}`}
                   target="_blank" rel="noopener noreferrer"
                   className="group card p-5 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 block">
                   <div className="flex items-start justify-between mb-2">
@@ -100,6 +105,36 @@ export default function HomePage() {
                   <p className="text-sm text-gray-500 mb-3">{p.desc}</p>
                   <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${catColors[p.cat] || 'bg-gray-100 text-gray-600'}`}>
                     {p.cat}
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Live Products</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              Production applications built and maintained by Kcoders — try them live
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {products.map((p) => {
+              const Icon = p.icon;
+              return (
+                <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer"
+                  className="group card p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-blue-200">
+                    <Icon className="text-white" size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3">{p.name}</h3>
+                  <p className="text-gray-500 text-sm mb-5">{p.desc}</p>
+                  <span className="inline-flex items-center gap-2 text-blue-600 font-medium text-sm group-hover:gap-3 transition-all">
+                    Visit Site <FiExternalLink size={16} />
                   </span>
                 </a>
               );
@@ -176,7 +211,7 @@ export default function HomePage() {
             <Link href="/register" className="inline-flex items-center gap-2 bg-white text-blue-700 px-8 py-3.5 rounded-xl font-semibold hover:bg-blue-50 transition-all shadow-xl">
               Get Started <FiArrowRight />
             </Link>
-            <Link href="/courses" className="inline-flex items-center gap-2 bg-white/10 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/20 transition-all border border-white/20">
+            <Link href="/services" className="inline-flex items-center gap-2 bg-white/10 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/20 transition-all border border-white/20">
               View Services
             </Link>
             <a href="/portfolio/index.html"

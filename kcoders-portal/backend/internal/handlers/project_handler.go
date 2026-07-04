@@ -58,6 +58,8 @@ func (h *ProjectHandler) SubmitBrief(c *gin.Context) {
 		return
 	}
 
+	utils.LogActivity(h.DB, userID, models.ActionProjectBrief, "Submitted brief for "+service.Title+" ("+req.Tier+" tier)")
+
 	// Notify admin via email
 	go utils.SendProjectBriefEmail(project.Email, project.FullName, service.Title, project.Description)
 

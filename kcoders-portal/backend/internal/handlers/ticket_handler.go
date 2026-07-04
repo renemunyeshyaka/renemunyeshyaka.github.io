@@ -7,6 +7,7 @@ import (
 	"gorm.io/gorm"
 
 	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/models"
+	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/utils"
 )
 
 type TicketHandler struct {
@@ -38,6 +39,8 @@ func (h *TicketHandler) CreateTicket(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to create ticket"})
 		return
 	}
+
+	utils.LogActivity(h.DB, userID, models.ActionTicketCreated, "Created ticket: "+req.Subject)
 
 	c.JSON(http.StatusCreated, gin.H{"ticket": ticket})
 }

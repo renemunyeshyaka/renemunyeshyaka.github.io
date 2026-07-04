@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kcoders · Jean René MUNYESHYAKA</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="description" content="Full-stack engineer, SysAdmin & Cybersecurity enthusiast. Building innovative software solutions in Rwanda.">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
@@ -38,7 +40,7 @@
     .btn-outline:hover{border-color:#f97316;background:rgba(249,115,22,.05)}
     .hero-visual{display:flex;justify-content:center;align-items:center}
     .hero-shape{width:380px;height:380px;background:radial-gradient(circle at 30% 30%,rgba(249,115,22,.2),transparent 70%);border-radius:50%;display:flex;align-items:center;justify-content:center}
-    .hero-shape .inner-icon{font-size:7rem;color:rgba(249,115,22,.3);animation:float 6s ease-in-out infinite}
+    .hero-shape .profile-img{width:220px;height:220px;object-fit:cover;border-radius:50%;opacity:.55;animation:float 6s ease-in-out infinite}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
     .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.2);font-size:.8rem;display:flex;flex-direction:column;align-items:center;gap:.2rem;animation:bounce 2.4s infinite;z-index:2}
     @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
@@ -72,6 +74,16 @@
     .projects-cta{text-align:center;margin-top:3rem}
     .projects-cta a{color:#f97316;font-weight:500;border-bottom:1px solid rgba(249,115,22,.2);padding-bottom:.2rem;transition:border-color .2s}
     .projects-cta a:hover{border-color:#f97316}
+    #products{background:rgba(249,115,22,.03);border-top:1px solid rgba(249,115,22,.06);border-bottom:1px solid rgba(249,115,22,.06)}
+    .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:800px;margin:0 auto}
+    .product-card{background:#1a1a1f;border-radius:20px;padding:2.5rem 2rem;border:1px solid rgba(255,255,255,.06);text-align:center;transition:all .25s;display:flex;flex-direction:column;align-items:center}
+    .product-card:hover{border-color:rgba(249,115,22,.3);background:#22222a;transform:translateY(-4px)}
+    .product-card .icon{font-size:2.4rem;color:#f97316;margin-bottom:1rem;width:64px;height:64px;background:rgba(249,115,22,.1);border-radius:18px;display:flex;align-items:center;justify-content:center}
+    .product-card h3{font-size:1.3rem;font-weight:600;margin-bottom:.4rem}
+    .product-card p{color:rgba(255,255,255,.6);font-size:.92rem;margin-bottom:1.2rem;flex:1}
+    .product-link{color:#f97316;font-weight:500;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s;font-size:.95rem}
+    .product-link:hover{gap:.8rem}
+    @media(max-width:700px){.products-grid{grid-template-columns:1fr;max-width:400px}}
     #contact{text-align:center;padding:4rem 0 5rem}
     #contact h2{font-size:2.6rem;font-weight:600;letter-spacing:-.02em}
     #contact .sub{color:rgba(255,255,255,.5);font-size:1.05rem;max-width:480px;margin:.5rem auto 2.5rem}
@@ -92,6 +104,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#products">Products</a></li>
         <li><a href="#tech">Tech</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -112,7 +125,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-shape"><i class="fas fa-crown inner-icon"></i></div>
+        <div class="hero-shape"><img src="images/profile.webp" alt="Jean René MUNYESHYAKA" class="profile-img"></div>
       </div>
     </div>
     <div class="scroll-hint"><span>scroll</span><i class="fas fa-chevron-down"></i></div>
@@ -153,6 +166,26 @@
     </div>
   </section>
 
+  <section id="products">
+    <div class="container">
+      <h2 class="section-title reveal">Live Products</h2>
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="icon"><i class="fas fa-globe-africa"></i></div>
+          <h3>LandVal</h3>
+          <p>Accurate land valuation for Rwanda using government gazette data &amp; market analysis</p>
+          <a href="https://landval.kcoders.org/" target="_blank" class="product-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="product-card reveal">
+          <div class="icon"><i class="fas fa-file-alt"></i></div>
+          <h3>CV Builder</h3>
+          <p>Professional CV &amp; Resume Builder with digital signatures, QR codes &amp; multi-format export</p>
+          <a href="https://cvbuilder.kcoders.org/" target="_blank" class="product-link">Visit Site <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="tech">
     <div class="container">
       <h2 class="section-title reveal" style="margin-bottom:1.8rem">Technologies We Use</h2>
@@ -177,12 +210,16 @@
     <div class="container">
       <h2 class="section-title reveal">Featured Projects</h2>
       <div class="projects-grid">
-        <div class="project-card reveal"><div class="icon"><i class="fas fa-credit-card"></i></div><h3>Pay Gateway System</h3><p>Multi-auth, secure payments, product catalog, refunds & support.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
-        <div class="project-card reveal"><div class="icon"><i class="fas fa-user-astronaut"></i></div><h3>Portfolio Website</h3><p>Responsive, minimalist, with smooth animations and high accessibility.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
-        <div class="project-card reveal"><div class="icon"><i class="fas fa-robot"></i></div><h3>Auto Evaluation System</h3><p>Fair, transparent assessments via objective algorithms.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
-        <div class="project-card reveal"><div class="icon"><i class="fas fa-qrcode"></i></div><h3>Scan and Pay</h3><p>Secure QR-based payments with transaction tracking.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
-        <div class="project-card reveal"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h3>eLearnPro</h3><p>LMS with course management, progress tracking, payment & signatures.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
-        <div class="project-card reveal"><div class="icon"><i class="fas fa-university"></i></div><h3>Swedish Open University</h3><p>Distance learning platform with course management and dashboards.</p><a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-credit-card"></i></div><h3>Pay Gateway System</h3><p>Multi-auth, secure payments, product catalog, refunds & support.</p><a href="https://github.com/renemunyeshyaka/pay-gateway-system" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-user-astronaut"></i></div><h3>Portfolio Website</h3><p>Responsive, minimalist, with smooth animations and high accessibility.</p><a href="https://github.com/renemunyeshyaka/renemunyeshyaka.github.io" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-robot"></i></div><h3>Auto Evaluation System</h3><p>Fair, transparent assessments via objective algorithms.</p><a href="https://github.com/renemunyeshyaka/automated-evaluation-system" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-qrcode"></i></div><h3>Scan and Pay</h3><p>Secure QR-based payments with transaction tracking.</p><a href="https://github.com/renemunyeshyaka/scan-and-pay" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h3>eLearnPro</h3><p>LMS with course management, progress tracking, payment & signatures.</p><a href="https://github.com/renemunyeshyaka/elearnpro" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-university"></i></div><h3>Swedish Open University</h3><p>Distance learning platform with course management and dashboards.</p><a href="https://github.com/renemunyeshyaka/swedish-open-university" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-cloud"></i></div><h3>RSSB Project</h3><p>Automated K8s cluster with CI/CD, monitoring &amp; security hardening.</p><a href="https://github.com/renemunyeshyaka/RSSB_project-repo" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-store"></i></div><h3>Store Management System</h3><p>Modern store management with inventory, sales, POS &amp; analytics.</p><a href="https://github.com/renemunyeshyaka/store-management-system" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-plane"></i></div><h3>Nicolas in Dubai</h3><p>Travel business website with booking system &amp; user dashboard.</p><a href="https://github.com/renemunyeshyaka/nicolas-in-dubai" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
+        <div class="project-card reveal"><div class="icon"><i class="fas fa-church"></i></div><h3>MNDA Rwanda</h3><p>Bilingual missionary website with secure contact &amp; anti-spam.</p><a href="https://github.com/renemunyeshyaka/mnda" class="project-link" target="_blank">GitHub <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="projects-cta reveal">
         <a href="https://github.com/renemunyeshyaka" target="_blank"><i class="fab fa-github"></i> View All Projects on GitHub</a>

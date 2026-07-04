@@ -31,7 +31,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/courses" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+            <Link href="/services" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
               Services
             </Link>
             <a href="/portfolio/index.html" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
@@ -70,7 +70,7 @@ export default function Navbar() {
                         <FiGrid className="inline mr-2" size={14} /> Dashboard
                       </Link>
                       <Link
-                        href="/courses"
+                        href="/services"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                         onClick={() => setShowDropdown(false)}
                       >
@@ -112,7 +112,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden border-t border-gray-200 bg-white">
           <div className="px-4 py-3 space-y-2">
-            <Link href="/courses" className="block px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-lg"
+            <Link href="/services" className="block px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-lg"
               onClick={() => setIsOpen(false)}>
               Services
             </Link>

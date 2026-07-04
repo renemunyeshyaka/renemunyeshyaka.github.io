@@ -6,8 +6,9 @@ const projects = [
         description: "Pay Gateway System enable users with multiple authentication and secure account for all users, employers and Admin, providing strong password, CAPTCHA, mail activation for registration and OTP at each login attempt. The system is linked to the owner bank account for smooth payment, product catalog for the users, refund/claim, support and more.",
         tags: ["Spring Boot", "Spring Security", "JWT", "PostgreSQL", "OTP", "Email Service", "CRUD API", "MFA", "User Registration", "Validation", "Verification",  "Authentication", "Transaction"],
         image: "assets/projects/paymentgateway.webp",
-        github: "https://github.com/renemunyeshyaka/",
-        liveDemo: "https://github.com/renemunyeshyaka/paymentgateway/",
+        github: "https://github.com/renemunyeshyaka/pay-gateway-system",
+        liveDemo: "https://github.com/renemunyeshyaka/pay-gateway-system",
+
         featured: true, // Changed to true to show all 6 projects
         category: "Backend"
     },
@@ -27,8 +28,9 @@ const projects = [
         description: "The Automated Evaluation System ensures fairness by providing unbiased, consistent, and transparent assessments through objective algorithms and standardized criteria. Transparency is crucial because it reveals how decisions are made, reducing opportunities for corruption. Automation helps by making processes consistent and traceable, decreasing human discretion that can lead to corrupt practices.",
         tags: ["React", "Node.js", "Express", "MongoDB", "Chart.js", "algorithms", "UR-CST", "School of ICT", "AFRETEC", "MasterCard", "JWT Auth", "REST API"],
         image: "assets/projects/AutoEvaluation.webp",
-        github: "https://github.com/renemunyeshyaka/FinancialApp",
-        liveDemo: "https://renemunyeshyaka.github.io/FinancialApp/",
+        github: "https://github.com/renemunyeshyaka/automated-evaluation-system",
+        liveDemo: "https://renemunyeshyaka.github.io/automated-evaluation-system",
+
         featured: true,
         category: "Full Stack"
     },
@@ -37,8 +39,9 @@ const projects = [
         description: "Scan and Pay system has secure account for all users, business owners and Admin. Any buyer can use it to process the payment via QR scan to reduce errors, keep track on transaction, proof of payment, reduce errors and build trust among the users.",
         tags: ["Java", "JS", "CRUD API", "PostgreSQL", "Unit Testing", "API Integration"],
         image: "assets/projects/scanandpay.webp",
-        github: "https://github.com/renemunyeshyaka/scan_and_pay",
-        liveDemo: "https://github.com/renemunyeshyaka/scan_and_pay",
+        github: "https://github.com/renemunyeshyaka/scan-and-pay",
+        liveDemo: "https://github.com/renemunyeshyaka/scan-and-pay",
+
         featured: true, // Changed to true to show all 6 projects
         category: "Frontend"
     },
@@ -48,8 +51,9 @@ const projects = [
         description: "A comprehensive Learning Management System (LMS) platform for effective online training and seamless learning experiences. Features include course management, progress tracking, payment integration, and digital signatures for certifications.",
         tags: ["Java Spring Boot", "React", "Tailwind CSS", "Payment System", "Digital Signature", "RESTful API", "MongoDB", "AWS"],
         image: "assets/projects/eLeaningPro.webp",
-        github: "https://github.com/renemunyeshyaka/eLearningPro",
-        liveDemo: "https://github.com/renemunyeshyaka/eLearningPro/",
+        github: "https://github.com/renemunyeshyaka/elearnpro",
+        liveDemo: "https://github.com/renemunyeshyaka/elearnpro/",
+
         featured: true,
         category: "Full Stack"
     },
@@ -61,6 +65,46 @@ const projects = [
         image: "assets/projects/Swedish Open University.webp",
         github: "https://github.com/renemunyeshyaka/SWEDISH-OPEN-UNIVERSITY",
         liveDemo: "https://swedishopenuniversity.se/",
+        featured: true,
+        category: "Full Stack"
+    },
+    {
+        title: "RSSB Project",
+        description: "Automated Kubernetes cluster with CI/CD pipeline, monitoring, and security hardening using Terraform, Ansible, and Prometheus/Grafana.",
+        tags: ["Kubernetes", "Terraform", "Ansible", "CI/CD", "Prometheus", "Grafana", "Docker", "Go", "DevOps"],
+        image: "assets/projects/rssb.webp",
+        github: "https://github.com/renemunyeshyaka/RSSB_project-repo",
+        liveDemo: "#",
+        featured: true,
+        category: "DevOps"
+    },
+    {
+        title: "Store Management System",
+        description: "Modern stationery store management system handling inventory, sales, purchases, POS, customer management, and analytics with role-based dashboards.",
+        tags: ["Node.js", "Express", "PostgreSQL", "JavaScript", "Docker", "POS", "Inventory", "Analytics"],
+        image: "assets/projects/store-management.webp",
+        github: "https://github.com/renemunyeshyaka/store-management-system",
+        liveDemo: "#",
+        featured: true,
+        category: "Full Stack"
+    },
+    {
+        title: "Nicolas in Dubai",
+        description: "Travel business website for Nicolas' Dubai services with secure registration, OTP login, booking system, and personalized user dashboard.",
+        tags: ["Next.js", "React", "Node.js", "Express", "PostgreSQL", "JWT", "OTP", "Responsive"],
+        image: "assets/projects/nicolas-dubai.webp",
+        github: "https://github.com/renemunyeshyaka/nicolas-in-dubai",
+        liveDemo: "#",
+        featured: true,
+        category: "Full Stack"
+    },
+    {
+        title: "MNDA Rwanda",
+        description: "Bilingual (EN/FR) missionary website for the Missionary Sisters of Our Lady of the Angels with secure contact form and anti-spam protection.",
+        tags: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express", "SMTP", "Bilingual", "Responsive"],
+        image: "assets/projects/mnda.webp",
+        github: "https://github.com/renemunyeshyaka/mnda",
+        liveDemo: "#",
         featured: true,
         category: "Full Stack"
     }

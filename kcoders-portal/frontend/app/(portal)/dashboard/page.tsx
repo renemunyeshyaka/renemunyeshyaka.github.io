@@ -46,9 +46,13 @@ export default function DashboardPage() {
   const { token } = useAuth();
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [profileData, setProfileData] = useState<any>(null);
 
   useEffect(() => {
-    loadDashboard();
+    if (token) {
+      loadDashboard();
+      api.getProfile(token).then(d => setProfileData(d)).catch(() => {});
+    }
   }, [token]);
 
   const loadDashboard = async () => {
@@ -74,15 +78,6 @@ export default function DashboardPage() {
   }
 
   const { profile, stats, recent_projects, expiring_milestones, tickets } = data || {};
-
-  // Get profile from first project's user or from a separate profile fetch
-  const [profileData, setProfileData] = useState<any>(null);
-
-  useEffect(() => {
-    if (token) {
-      api.getProfile(token).then(d => setProfileData(d)).catch(() => {});
-    }
-  }, [token]);
 
   return (
     <ProtectedRoute>

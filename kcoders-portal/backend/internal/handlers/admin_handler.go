@@ -1,11 +1,14 @@
 package handlers
 
 import (
+	"encoding/csv"
 	"fmt"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 
 	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/models"
@@ -442,6 +445,80 @@ func (h *AdminHandler) GetRevenueReport(c *gin.Context) {
 	})
 }
 
+func (h *AdminHandler) ExportRevenueCSV(c *gin.Context) {
+	sinceStr := c.Query("since")
+	since := time.Now().AddDate(0, -1, 0)
+	if sinceStr != "" {
+		if t, err := time.Parse("2006-01-02", sinceStr); err == nil {
+			since = t
+		}
+	}
+
+	type RevenueItem struct {
+		Date      string
+		Amount    float64
+		Currency  string
+		Service   string
+		Milestone string
+	}
+
+	var items []RevenueItem
+	h.DB.Model(&models.Milestone{}).
+		Select("DATE(milestones.verified_at) as date, milestones.amount, milestones.currency, services.title as service, milestones.title as milestone").
+		Joins("JOIN projects ON projects.id = milestones.project_id").
+		Joins("JOIN services ON services.id = projects.service_id").
+		Where("milestones.status = ? AND milestones.verified_at >= ?", models.MilestoneConfirmed, since).
+		Order("milestones.verified_at DESC").
+		Find(&items)
+
+	c.Header("Content-Type", "text/csv")
+	c.Header("Content-Disposition", "attachment; filename=revenue-report.csv")
+
+	csv := "Date,Service,Milestone,Amount,Currency\n"
+	for _, item := range items {
+		csv += fmt.Sprintf("%s,%s,%s,%.0f,%s\n", item.Date, item.Service, item.Milestone, item.Amount, item.Currency)
+	}
+	c.String(http.StatusOK, csv)
+}
+
+// ==================== Client Activity Log ====================
+
+func (h *AdminHandler) GetActivityLog(c *gin.Context) {
+	var activities []models.ActivityLog
+	h.DB.Preload("User").Order("created_at DESC").Limit(100).Find(&activities)
+
+	type ActivityItem struct {
+		ID        uint   `json:"id"`
+		UserID    uint   `json:"user_id"`
+		UserName  string `json:"user_name"`
+		UserEmail string `json:"user_email"`
+		Action    string `json:"action"`
+		Details   string `json:"details"`
+		CreatedAt string `json:"created_at"`
+	}
+
+	var items []ActivityItem
+	for _, a := range activities {
+		name := ""
+		email := ""
+		if a.User != nil {
+			name = a.User.Name
+			email = a.User.Email
+		}
+		items = append(items, ActivityItem{
+			ID:        a.ID,
+			UserID:    a.UserID,
+			UserName:  name,
+			UserEmail: email,
+			Action:    a.Action,
+			Details:   a.Details,
+			CreatedAt: a.CreatedAt.Format("2006-01-02 15:04"),
+		})
+	}
+
+	c.JSON(http.StatusOK, gin.H{"activities": items})
+}
+
 // ==================== Deliverable Sign-off ====================
 
 func (h *AdminHandler) SignOffDeliverable(c *gin.Context) {
@@ -470,4 +547,110 @@ func (h *AdminHandler) SignOffDeliverable(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": "deliverable signed off"})
+}
+
+// ==================== CSV Export/Import ====================
+
+func (h *AdminHandler) ExportUsersCSV(c *gin.Context) {
+	var users []models.User
+	h.DB.Order("created_at DESC").Find(&users)
+
+	c.Header("Content-Type", "text/csv")
+	c.Header("Content-Disposition", "attachment; filename=users.csv")
+
+	csv := "ID,Name,Email,Phone,WhatsApp,Country,Active,Admin,Created\n"
+	for _, u := range users {
+		active := "No"
+		if u.IsActive {
+			active = "Yes"
+		}
+		admin := "No"
+		if u.IsAdmin {
+			admin = "Yes"
+		}
+		csv += fmt.Sprintf("%d,%s,%s,%s,%s,%s,%s,%s,%s\n",
+			u.ID, u.Name, u.Email, u.Phone, u.WhatsApp, u.Country,
+			active, admin, u.CreatedAt.Format("2006-01-02"))
+	}
+	c.String(http.StatusOK, csv)
+}
+
+func (h *AdminHandler) ImportUsersCSV(c *gin.Context) {
+	file, err := c.FormFile("file")
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "file is required"})
+		return
+	}
+
+	f, err := file.Open()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to open file"})
+		return
+	}
+	defer f.Close()
+
+	reader := csv.NewReader(f)
+	records, err := reader.ReadAll()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid CSV format"})
+		return
+	}
+
+	if len(records) < 2 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CSV must have header + at least one row"})
+		return
+	}
+
+	imported := 0
+	errors := 0
+	for i, row := range records[1:] {
+		if len(row) < 3 {
+			errors++
+			continue
+		}
+		name := strings.TrimSpace(row[0])
+		email := strings.TrimSpace(row[1])
+		password := strings.TrimSpace(row[2])
+
+		if name == "" || email == "" || password == "" {
+			errors++
+			continue
+		}
+
+		hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+		if err != nil {
+			errors++
+			continue
+		}
+
+		user := models.User{
+			Name:           name,
+			Email:          email,
+			PasswordHash:   string(hash),
+			Phone:          "",
+			Country:        "RW",
+			IsActive:       true,
+			EmailActivated: true,
+		}
+
+		if len(row) > 3 {
+			user.Phone = strings.TrimSpace(row[3])
+		}
+		if len(row) > 4 {
+			user.Country = strings.TrimSpace(row[4])
+		}
+
+		if err := h.DB.Create(&user).Error; err != nil {
+			errors++
+			continue
+		}
+		imported++
+		_ = i
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"imported": imported,
+		"errors":   errors,
+		"message":  fmt.Sprintf("Imported %d users, %d errors", imported, errors),
+	})
 }
