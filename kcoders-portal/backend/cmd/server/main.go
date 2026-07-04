@@ -11,9 +11,9 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/handlers"
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/middleware"
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/models"
+	"kcoders-portal/backend/internal/handlers"
+	"kcoders-portal/backend/internal/middleware"
+	"kcoders-portal/backend/internal/models"
 )
 
 func main() {

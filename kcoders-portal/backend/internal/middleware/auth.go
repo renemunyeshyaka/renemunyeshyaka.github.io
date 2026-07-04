@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/auth"
+	"kcoders-portal/backend/internal/auth"
 )
 
 func AuthRequired() gin.HandlerFunc {

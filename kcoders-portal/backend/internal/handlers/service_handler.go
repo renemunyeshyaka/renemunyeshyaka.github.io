@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/models"
+	"kcoders-portal/backend/internal/models"
 )
 
 type ServiceHandler struct {

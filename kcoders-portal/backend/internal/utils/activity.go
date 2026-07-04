@@ -3,7 +3,7 @@ package utils
 import (
 	"time"
 
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/models"
+	"kcoders-portal/backend/internal/models"
 	"gorm.io/gorm"
 )
 

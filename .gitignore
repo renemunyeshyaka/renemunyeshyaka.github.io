@@ -23,6 +23,7 @@ out/
 *.out
 *.testbin
 /kcoders-portal/backend/tmp/
+/kcoders-portal/backend/server
 
 # === IDE ===
 .vscode/

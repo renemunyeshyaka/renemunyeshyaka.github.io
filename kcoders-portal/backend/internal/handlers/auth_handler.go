@@ -9,9 +9,9 @@ import (
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/auth"
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/models"
-	"github.com/renemunyeshyaka/kcoders-portal/backend/internal/utils"
+	"kcoders-portal/backend/internal/auth"
+	"kcoders-portal/backend/internal/models"
+	"kcoders-portal/backend/internal/utils"
 )
 
 type AuthHandler struct {

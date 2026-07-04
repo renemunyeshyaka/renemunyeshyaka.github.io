@@ -1,4 +1,4 @@
-module github.com/renemunyeshyaka/kcoders-portal/backend
+module kcoders-portal/backend
 
 go 1.25
 
