@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const API_HOST = process.env.API_HOST || 'http://localhost:5003';
+
 const nextConfig = {
   images: {
     domains: ['localhost', 'kcoders.org'],
@@ -7,7 +9,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://backend:5003/api/:path*',
+        destination: `${API_HOST}/api/:path*`,
       },
     ];
   },

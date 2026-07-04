@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { AuthProvider } from '@/lib/auth-context'
 import { Toaster } from 'react-hot-toast'
+import ChatWidget from '@/components/shared/ChatWidget'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body>
         <AuthProvider>
           {children}
+          <ChatWidget />
           <Toaster
             position="top-right"
             toastOptions={{
