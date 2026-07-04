@@ -127,6 +127,10 @@ export const api = {
   getTicket: (id: number, token: string) =>
     request(`/tickets/${id}`, { token }),
 
+  // Payments
+  payMilestone: (token: string, milestoneId: number) =>
+    request(`/milestones/${milestoneId}/pay`, { method: 'POST', token }),
+
   // Visits
   trackVisit: (page: string) =>
     request('/visits/track', { method: 'POST', body: { page } }),

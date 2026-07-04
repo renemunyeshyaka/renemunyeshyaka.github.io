@@ -112,6 +112,9 @@ func main() {
 			// Dashboard
 			authed.GET("/dashboard", projectHandler.Dashboard)
 
+			// Milestones
+			authed.POST("/milestones/:id/pay", projectHandler.PayMilestone)
+
 			// Tickets
 			authed.POST("/tickets", ticketHandler.CreateTicket)
 			authed.GET("/tickets", ticketHandler.MyTickets)

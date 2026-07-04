@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -175,5 +176,46 @@ func (h *ProjectHandler) UploadDocument(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message":   "document uploaded",
 		"file_path": result.FilePath,
+	})
+}
+
+// PayMilestone marks a milestone as paid by the client.
+func (h *ProjectHandler) PayMilestone(c *gin.Context) {
+	userID := c.GetUint("user_id")
+	milestoneID := c.Param("id")
+
+	var milestone models.Milestone
+	if err := h.DB.Preload("Project").First(&milestone, milestoneID).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "milestone not found"})
+		return
+	}
+
+	if milestone.Project.UserID != userID {
+		c.JSON(http.StatusForbidden, gin.H{"error": "not your milestone"})
+		return
+	}
+
+	if milestone.Status != models.MilestonePending {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "milestone is not pending payment"})
+		return
+	}
+
+	now := time.Now()
+	h.DB.Model(&milestone).Updates(map[string]interface{}{
+		"status":  models.MilestonePaid,
+		"paid_at": &now,
+	})
+
+	// Notify admin
+	go utils.SendEmail(
+		os.Getenv("FROM_EMAIL"),
+		"Milestone Payment Submitted",
+		fmt.Sprintf("Client marked milestone '%s' (%.0f %s) as paid.\nProject: %s\nPlease verify payment.",
+			milestone.Title, milestone.Amount, milestone.Currency, milestone.Project.FullName),
+	)
+
+	c.JSON(http.StatusOK, gin.H{
+		"message":   "payment submitted for verification",
+		"milestone": milestone,
 	})
 }

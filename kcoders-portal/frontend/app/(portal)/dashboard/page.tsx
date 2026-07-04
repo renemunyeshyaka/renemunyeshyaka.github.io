@@ -5,10 +5,11 @@ import Link from 'next/link';
 import ProtectedRoute from '@/components/shared/ProtectedRoute';
 import { api } from '@/lib/api';
 import { useAuth } from '@/lib/auth-context';
+import toast from 'react-hot-toast';
 import {
   FiGrid, FiCode, FiCheckCircle, FiClock, FiAlertCircle,
   FiUser, FiMail, FiPhone, FiMapPin, FiArrowRight, FiPlus,
-  FiLayers, FiTrendingUp,
+  FiLayers, FiTrendingUp, FiDollarSign, FiX, FiCheck,
 } from 'react-icons/fi';
 
 interface DashboardData {
@@ -78,6 +79,26 @@ export default function DashboardPage() {
   }
 
   const { profile, stats, recent_projects, expiring_milestones, tickets } = data || {};
+
+  const [payModal, setPayModal] = useState<any>(null);
+  const [paying, setPaying] = useState(false);
+
+  const handlePayNow = (ms: any) => setPayModal(ms);
+
+  const confirmPayment = async () => {
+    if (!token || !payModal) return;
+    setPaying(true);
+    try {
+      await api.payMilestone(token, payModal.id);
+      toast.success('Payment submitted! Admin will verify shortly.');
+      setPayModal(null);
+      loadDashboard();
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to submit payment');
+    } finally {
+      setPaying(false);
+    }
+  };
 
   return (
     <ProtectedRoute>
@@ -180,12 +201,17 @@ export default function DashboardPage() {
                         <p className="text-sm font-medium text-gray-900">{ms.project?.service?.title} — {ms.title}</p>
                         <p className="text-xs text-gray-500">Amount: {ms.amount?.toLocaleString()} {ms.currency}</p>
                       </div>
-                      {ms.deadline && (
-                        <span className={`countdown-timer ${new Date(ms.deadline).getTime() - Date.now() < 1800000 ? 'text-red-600' : ''}`}>
-                          <FiClock size={14} />
-                          {Math.ceil((new Date(ms.deadline).getTime() - Date.now()) / 3600000)}h remaining
-                        </span>
-                      )}
+                      <div className="flex items-center gap-2">
+                        {ms.deadline && (
+                          <span className={`countdown-timer text-xs ${new Date(ms.deadline).getTime() - Date.now() < 1800000 ? 'text-red-600' : 'text-amber-600'}`}>
+                            <FiClock size={14} className="inline mr-1" />
+                            {Math.ceil((new Date(ms.deadline).getTime() - Date.now()) / 3600000)}h
+                          </span>
+                        )}
+                        <button onClick={() => handlePayNow(ms)} className="btn btn-primary btn-xs">
+                          Pay Now
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -282,6 +308,37 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* Payment Modal */}
+      {payModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => setPayModal(null)}>
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                <FiDollarSign className="text-green-600" /> Pay Milestone
+              </h3>
+              <button onClick={() => setPayModal(null)} className="text-gray-400 hover:text-gray-600"><FiX size={20} /></button>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-4 mb-4">
+              <p className="text-sm text-gray-500 mb-1">{payModal.project?.service?.title}</p>
+              <p className="font-semibold text-gray-900 mb-2">{payModal.title}</p>
+              <p className="text-2xl font-bold text-green-600">{payModal.amount?.toLocaleString()} {payModal.currency}</p>
+            </div>
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
+              <p className="text-sm font-medium text-amber-800 mb-2">📱 Payment Instructions</p>
+              <p className="text-sm text-amber-700 mb-1">Send exact amount via <strong>Mobile Money</strong> to:</p>
+              <p className="text-lg font-bold text-amber-900">+250 788 620 201</p>
+              <p className="text-xs text-amber-600 mt-2">⏱ You have 2 hours to complete this payment</p>
+            </div>
+            <div className="flex gap-2">
+              <button onClick={() => setPayModal(null)} className="btn btn-secondary flex-1">Cancel</button>
+              <button onClick={confirmPayment} disabled={paying} className="btn btn-primary flex-1">
+                {paying ? 'Submitting...' : '✅ I\'ve Made the Payment'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </ProtectedRoute>
   );
 }
