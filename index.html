@@ -239,5 +239,52 @@
   <script>
     (function(){var h=document.getElementById('hamburger'),n=document.getElementById('navLinks');h&&h.addEventListener('click',function(){n.classList.toggle('open')});document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){n.classList.remove('open')})});var r=document.querySelectorAll('.reveal');new IntersectionObserver(function(e){e.forEach(function(e){e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.15}).observe(r[0]);r.forEach(function(e){new IntersectionObserver(function(t){t.forEach(function(t){t.isIntersecting&&e.classList.add('visible')})},{threshold:.15}).observe(e)});var s=document.querySelectorAll('section[id]'),a=document.querySelectorAll('.nav-links a');function u(){var e='';s.forEach(function(t){window.scrollY>=t.offsetTop-120&&(e=t.getAttribute('id'))});a.forEach(function(t){t.classList.remove('active');t.getAttribute('href')==='#'+e&&t.classList.add('active')})}window.addEventListener('scroll',u);window.addEventListener('load',u)})();
   </script>
+
+  <!-- AI Chat Widget -->
+  <div id="chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Space Grotesk',sans-serif">
+    <style>
+      #chat-btn{width:56px;height:56px;border-radius:50%;background:#f97316;color:#0f0f12;border:none;cursor:pointer;font-size:24px;box-shadow:0 4px 20px rgba(249,115,22,.4);transition:all .25s;display:flex;align-items:center;justify-content:center}
+      #chat-btn:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(249,115,22,.5)}
+      #chat-panel{position:absolute;bottom:68px;right:0;width:360px;max-height:520px;background:#1a1a1f;border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column;overflow:hidden}
+      #chat-panel.open{display:flex}
+      #chat-header{padding:16px 20px;background:#f97316;color:#0f0f12;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+      #chat-close{background:none;border:none;color:#0f0f12;cursor:pointer;font-size:18px;opacity:.7}
+      #chat-close:hover{opacity:1}
+      #chat-msgs{padding:16px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:340px}
+      .chat-msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeIn .3s}
+      .chat-msg.bot{background:#22222a;color:#ededee;align-self:flex-start;border-bottom-left-radius:4px}
+      .chat-msg.user{background:#f97316;color:#0f0f12;align-self:flex-end;border-bottom-right-radius:4px}
+      #chat-input-wrap{display:flex;gap:8px;padding:12px 16px;border-top:1px solid rgba(255,255,255,.06)}
+      #chat-input{flex:1;background:#22222a;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 14px;color:#ededee;font-size:14px;outline:none;font-family:inherit}
+      #chat-input:focus{border-color:#f97316}
+      #chat-send{background:#f97316;color:#0f0f12;border:none;border-radius:12px;width:40px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+      #chat-send:hover{background:#fb923c}
+      #chat-send:disabled{opacity:.5;cursor:not-allowed}
+      #chat-welcome{color:rgba(255,255,255,.5);font-size:13px;text-align:center;padding:30px 0}
+      @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+      @media(max-width:480px){#chat-panel{width:calc(100vw - 32px);right:-8px}}
+    </style>
+    <div id="chat-panel">
+      <div id="chat-header">
+        <span>🤖 Kcoders AI</span>
+        <button id="chat-close" onclick="closeChat()">✕</button>
+      </div>
+      <div id="chat-msgs">
+        <div id="chat-welcome">Hi! Ask me about Jean René's skills, projects, or services 👋</div>
+      </div>
+      <div id="chat-input-wrap">
+        <input id="chat-input" placeholder="Type your question..." onkeydown="if(event.key==='Enter')sendMessage()">
+        <button id="chat-send" onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+    <button id="chat-btn" onclick="toggleChat()">💬</button>
+  </div>
+
+  <script>
+    let chatOpen=false;
+    function toggleChat(){var p=document.getElementById('chat-panel'),b=document.getElementById('chat-btn');chatOpen=!chatOpen;p.classList.toggle('open',chatOpen);b.textContent=chatOpen?'✕':'💬'}
+    function closeChat(){document.getElementById('chat-panel').classList.remove('open');document.getElementById('chat-btn').textContent='💬';chatOpen=false}
+    async function sendMessage(){var i=document.getElementById('chat-input'),m=i.value.trim(),msgs=document.getElementById('chat-msgs'),w=document.getElementById('chat-welcome');if(!m)return;i.disabled=true;document.getElementById('chat-send').disabled=true;w&&(w.style.display='none');msgs.innerHTML+='<div class="chat-msg user">'+m.replace(/</g,'&lt;')+'</div>';i.value='';msgs.scrollTop=msgs.scrollHeight;try{var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m})});var d=await r.json();if(d.reply){msgs.innerHTML+='<div class="chat-msg bot">'+d.reply+'</div>'}else{msgs.innerHTML+='<div class="chat-msg bot">Sorry, I couldn\'t process that. Please try again.</div>'}}catch(e){msgs.innerHTML+='<div class="chat-msg bot">Connection issue. Please try again later.</div>'}msgs.scrollTop=msgs.scrollHeight;i.disabled=false;document.getElementById('chat-send').disabled=false;i.focus()}
+  </script>
 </body>
 </html>

@@ -52,6 +52,7 @@ func main() {
 	adminHandler := &handlers.AdminHandler{DB: db}
 	ticketHandler := &handlers.TicketHandler{DB: db}
 	visitHandler := &handlers.VisitHandler{DB: db}
+	chatHandler := &handlers.ChatHandler{}
 
 	// Setup router
 	r := gin.Default()
@@ -72,6 +73,9 @@ func main() {
 
 	api := r.Group("/api")
 	{
+		// AI Chat (no auth)
+		api.POST("/chat", chatHandler.Chat)
+
 		// Visit tracking (no auth)
 		api.POST("/visits/track", visitHandler.TrackVisit)
 
