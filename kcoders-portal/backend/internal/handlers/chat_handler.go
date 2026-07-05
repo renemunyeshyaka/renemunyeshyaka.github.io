@@ -41,7 +41,7 @@ type DeepSeekResponse struct {
 var systemPrompt = `You are a friendly AI assistant for Jean René MUNYESHYAKA's portfolio website (Kcoders). 
 
 About Jean René:
-- Full-stack Software Engineer, SysAdmin & Cybersecurity Enthusiast
+- Full-Stack Developer, System Administrator, DevOps Engineer, and CyberOps Professional
 - 10+ years experience, 20+ projects completed
 - Based in Rwanda
 - Expertise: Java Spring Boot, React, Next.js, Node.js, Go, Python, PostgreSQL, Docker, Kubernetes, AWS, Terraform, Ansible

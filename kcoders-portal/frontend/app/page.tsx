@@ -41,7 +41,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 text-blue-200 text-sm font-medium mb-6 backdrop-blur-sm border border-white/10">
-              👨‍💻 By Jean René MUNYESHYAKA
+              By Jean René MUNYESHYAKA
             </div>
             <h1 className="text-4xl md:text-7xl font-extrabold mb-6 leading-tight">
               Build Your Vision with{' '}
