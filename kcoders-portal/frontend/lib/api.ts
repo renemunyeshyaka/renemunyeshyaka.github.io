@@ -150,6 +150,9 @@ export const api = {
     toggleUserStatus: (id: number, token: string) =>
       request(`/admin/users/${id}/toggle-status`, { method: 'PUT', token }),
 
+    toggleHighValue: (id: number, token: string) =>
+      request(`/admin/users/${id}/toggle-high-value`, { method: 'PUT', token }),
+
     deleteUser: (id: number, token: string) =>
       request(`/admin/users/${id}`, { method: 'DELETE', token }),
 

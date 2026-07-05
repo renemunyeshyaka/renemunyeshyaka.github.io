@@ -17,6 +17,7 @@ type User struct {
 	TOTPSecret      string         `gorm:"size:100" json:"-"`
 	IsActive        bool           `gorm:"default:false" json:"is_active"`
 	IsAdmin         bool           `gorm:"default:false" json:"is_admin"`
+	IsHighValue     bool           `gorm:"default:false" json:"is_high_value"`
 	EmailActivated  bool           `gorm:"default:false" json:"email_activated"`
 	ActivationToken string         `gorm:"size:500" json:"-"`
 	Country         string         `gorm:"size:100;default:'RW'" json:"country"`

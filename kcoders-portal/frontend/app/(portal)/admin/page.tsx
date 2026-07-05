@@ -10,7 +10,7 @@ import {
   FiClock, FiShield, FiTrendingUp, FiUserCheck,
   FiUserX, FiPlus, FiArchive, FiRefreshCw, FiDownload,
   FiMessageSquare, FiSend, FiX, FiBarChart2, FiActivity,
-  FiLayers, FiUserPlus,
+  FiLayers, FiUserPlus, FiStar,
 } from 'react-icons/fi';
 
 type Tab = 'overview' | 'users' | 'services' | 'projects' | 'milestones' | 'tickets' | 'analytics';
@@ -86,6 +86,17 @@ export default function AdminPage() {
     }
   };
 
+  const handleToggleHighValue = async (userId: number) => {
+    if (!token) return;
+    try {
+      const data = await api.admin.toggleHighValue(userId, token);
+      toast.success(data.message || 'Prospect flag updated');
+      loadUsers();
+    } catch (err: any) {
+      toast.error(err.message);
+    }
+  };
+
   const handleVerifyMilestone = async (milestoneId: number, action: 'confirm' | 'reject', reason?: string) => {
     if (!token) return;
     try {
@@ -149,7 +160,7 @@ export default function AdminPage() {
 
           {/* Tab Content */}
           {activeTab === 'overview' && <OverviewTab data={dashboard} />}
-          {activeTab === 'users' && <UsersTab users={users} onToggle={handleToggleUser} onRefresh={loadUsers} />}
+          {activeTab === 'users' && <UsersTab users={users} onToggle={handleToggleUser} onToggleHighValue={handleToggleHighValue} onRefresh={loadUsers} />}
           {activeTab === 'services' && <ServicesTab services={services} token={token!} onRefresh={loadServices} />}
           {activeTab === 'projects' && <ProjectsTab projects={projects} token={token!} onRefresh={loadProjects} />}
           {activeTab === 'milestones' && <MilestonesTab projects={projects} token={token!} onVerify={handleVerifyMilestone} onRefresh={loadProjects} />}
@@ -243,16 +254,29 @@ function StatCard({ icon: Icon, label, value, color }: { icon: any; label: strin
 }
 
 // ==================== Users Tab ====================
-function UsersTab({ users, onToggle, onRefresh }: { users: any[]; onToggle: (id: number) => void; onRefresh: () => void }) {
+function UsersTab({ users, onToggle, onToggleHighValue, onRefresh }: {
+  users: any[]; onToggle: (id: number) => void; onToggleHighValue: (id: number) => void; onRefresh: () => void;
+}) {
+  const [showHighValueOnly, setShowHighValueOnly] = useState(false);
   const exportCSV = () => {
     window.open('/api/admin/users/export/csv', '_blank');
   };
+
+  const filteredUsers = showHighValueOnly ? users.filter((u: any) => u.is_high_value) : users;
 
   return (
     <div className="card p-6 animate-fade-in">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-900">User Management</h3>
         <div className="flex gap-2">
+          <button
+            onClick={() => setShowHighValueOnly(!showHighValueOnly)}
+            className={`btn btn-sm ${showHighValueOnly ? 'btn-warning' : 'btn-secondary'}`}
+            title="Toggle high-value prospects only"
+          >
+            <FiStar size={14} className={showHighValueOnly ? 'fill-amber-400 text-amber-400' : ''} />
+            {showHighValueOnly ? 'All Users' : 'High Value'}
+          </button>
           <button onClick={exportCSV} className="btn btn-secondary btn-sm"><FiDownload size={14} /> Export CSV</button>
           <button onClick={onRefresh} className="btn btn-secondary btn-sm"><FiRefreshCw size={14} /> Refresh</button>
         </div>
@@ -266,13 +290,14 @@ function UsersTab({ users, onToggle, onRefresh }: { users: any[]; onToggle: (id:
               <th className="pb-3 font-medium">Phone</th>
               <th className="pb-3 font-medium">Country</th>
               <th className="pb-3 font-medium">Status</th>
+              <th className="pb-3 font-medium">Prospect</th>
               <th className="pb-3 font-medium">Joined</th>
               <th className="pb-3 font-medium">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((u: any) => (
-              <tr key={u.id} className="border-b border-gray-100 hover:bg-gray-50">
+            {filteredUsers.map((u: any) => (
+              <tr key={u.id} className={`border-b border-gray-100 hover:bg-gray-50 ${u.is_high_value ? 'bg-amber-50' : ''}`}>
                 <td className="py-3 font-medium">{u.name}</td>
                 <td className="py-3 text-gray-600">{u.email}</td>
                 <td className="py-3 text-gray-600">{u.phone || '-'}</td>
@@ -281,6 +306,15 @@ function UsersTab({ users, onToggle, onRefresh }: { users: any[]; onToggle: (id:
                   <span className={`badge ${u.is_active ? 'badge-success' : 'badge-danger'}`}>
                     {u.is_active ? 'Active' : 'Suspended'}
                   </span>
+                </td>
+                <td className="py-3">
+                  <button
+                    onClick={() => onToggleHighValue(u.id)}
+                    className={`btn btn-sm ${u.is_high_value ? 'btn-warning' : 'btn-secondary'}`}
+                    title={u.is_high_value ? 'Unflag prospect' : 'Flag as high-value prospect'}
+                  >
+                    <FiStar size={14} className={u.is_high_value ? 'fill-amber-400 text-amber-400' : 'text-gray-400'} />
+                  </button>
                 </td>
                 <td className="py-3 text-gray-500">{new Date(u.created_at).toLocaleDateString()}</td>
                 <td className="py-3">

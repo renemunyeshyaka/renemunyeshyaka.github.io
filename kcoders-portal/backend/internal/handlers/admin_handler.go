@@ -481,6 +481,24 @@ func (h *AdminHandler) ExportRevenueCSV(c *gin.Context) {
 	c.String(http.StatusOK, csv)
 }
 
+func (h *AdminHandler) ToggleHighValue(c *gin.Context) {
+	id := c.Param("id")
+	var user models.User
+	if err := h.DB.First(&user, id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "user not found"})
+		return
+	}
+
+	newVal := !user.IsHighValue
+	h.DB.Model(&user).Update("is_high_value", newVal)
+
+	status := "flagged as high-value prospect"
+	if !newVal {
+		status = "unflagged as high-value prospect"
+	}
+	c.JSON(http.StatusOK, gin.H{"message": fmt.Sprintf("user %s successfully", status), "is_high_value": newVal})
+}
+
 // ==================== Client Activity Log ====================
 
 func (h *AdminHandler) GetActivityLog(c *gin.Context) {

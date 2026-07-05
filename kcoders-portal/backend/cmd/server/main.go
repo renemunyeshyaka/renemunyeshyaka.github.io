@@ -134,6 +134,7 @@ func main() {
 			admin.POST("/users/import/csv", adminHandler.ImportUsersCSV)
 			admin.GET("/users/:id", adminHandler.GetUser)
 			admin.PUT("/users/:id/toggle-status", adminHandler.ToggleUserStatus)
+			admin.PUT("/users/:id/toggle-high-value", adminHandler.ToggleHighValue)
 			admin.DELETE("/users/:id", adminHandler.DeleteUser)
 
 			// Service management

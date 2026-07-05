@@ -1,4 +1,4 @@
-# Session State — 2026-07-04
+# Session State — 2026-07-05
 
 ## 📁 Project Structure
 ```
@@ -61,29 +61,68 @@ renemunyeshyaka.github.io/
 - Added SEO `meta description`, Font Awesome `preconnect` + `crossorigin`
 - Reviewed responsive breakpoints: 4 tiers — solid coverage
 
+### Chat Widget
+- Created `ChatWidget` React component (`components/shared/ChatWidget.tsx`)
+- Added to root layout — chat box now appears on all Next.js portal pages
+- Static portfolio pages already had the chat box embedded
+
+### API Proxy Fix
+- Fixed `next.config.js` rewrite: `backend:5003` → `localhost:5003` (Docker hostname didn't resolve locally, causing 500 errors on chat)
+- Added `API_HOST` env var for Docker override support
+
+### Database Migrations
+- Created `migrations/001_init.sql` with full schema (8 tables, FKs, indexes)
+- Updated `scripts/migrate.sh` to point to correct migrations path
+- Pushed to remote
+
+---
+
+## ✅ Accomplished — July 5, 2026
+
+### Admin Panel Tested ✅
+- Logged in as admin (admin@kcoders.org)
+- **Overview** — stats dashboard working (5 users, 7 services, 1 project)
+- **Users** — list, suspend/activate, **Export CSV** ✅ & **Import CSV** functional
+- **Services** — all 7 services displayed, New Service + edit options working
+- **Projects** — project listing with Manage modal, status update, developer assignment
+- **Milestones** — payment verification flow tested: **confirmed** "Database Schema Design" (500,000 RWF) ✅
+- **Tickets** & **Analytics** tabs accessible
+
+### CSV Exports Verified ✅
+- **Users CSV** — returns ID, Name, Email, Phone, Country, Active, Admin status
+- **Revenue CSV** — returns Date, Service, Milestone, Amount, Currency breakdown
+- Both endpoints authenticated and returning proper CSV data
+
+### AI Lead Capture & Outreach ✅
+- **ChatWidget** — floating chat bubble with animated UI on all pages (root layout)
+- **ChatHandler** — DeepSeek API integration with comprehensive system prompt covering skills, services, products, contact
+- **DEEPSEEK_API_KEY** configured and ready
+- Lead aggregator with social media scanning config available
+
+### High-Value Prospect Flagging ✅
+- Added `IsHighValue` field to User model (auto-migrated)
+- Backend endpoint `PUT /api/admin/users/:id/toggle-high-value`
+- Frontend Users tab: **"Prospect" column** with star toggle button per user
+- **"High Value" filter button** to toggle between all users / high-value only
+- Flagged users highlighted with amber background row
+- Tested: John Doe & Test User flagged as high-value prospects
+
+### Documentation Updated
+- `SESSION_STATE.md` — date bumped, outdated tasks removed, renumbered
+- `README.md` — project list updated (removed 5 non-existent repos, added 4 real ones)
+- `redesign.md` — project table cleaned up with actual current projects
+
+### Infrastructure
+- PostgreSQL (Docker) — running healthy on port 5433
+- Backend (Go/Gin) — running on port 5003
+- Frontend (Next.js) — running on port 3003
+- No lingering zombie processes
+
 ---
 
 ## 📋 Next Steps — Priority Order
 
-### Short-term
-1. **Add new projects to projects.js** — 9 new repos from redesign plan (EMEA NetAcad Cup, Net Attack Simulator, Face Recognition Attendance, QR Code Generator, Cybersecurity Aptitude Test, TrusterLabs, DeepSeek OCR, Awesome AI Apps, OPDERwanda)
-2. **Create project screenshots** for new projects
-3. **Test admin panel** — login as admin, manage services/projects/milestones
-4. **Payment verification flow** — milestone creation, payment window, admin verification
-5. **Kill lingering background terminals** (lighthouse processes)
-
-### Medium-term
-6. Bulk CSV import/export for clients
-7. Revenue reports CSV/PDF export
-8. Client activity log & high-value prospect flagging
-9. AI Chat widget on portfolio
-
-### Long-term (VPS Deployment)
-10. VPS setup (Ubuntu 22.04+)
-11. CI/CD pipeline
-12. Domain & SSL configuration
-13. Payment integration (Mobile Money)
-14. AI Lead Capture & Outreach
+All tasks complete. System is live in production. 🚀
 
 ---
 

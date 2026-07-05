@@ -63,7 +63,7 @@ The portfolio has been **completely redesigned** from the original static HTML i
 Updated with repos from https://github.com/renemunyeshyaka/ including:
 - Pay Gateway System, Automated Evaluation, Scan & Pay, eLearnPro, Swedish Open University
 - Net Attack Simulator, Face Recognition Attendance, QR Code Generator, Cybersecurity Aptitude Test
-- TrusterLabs, DeepSeek OCR, Awesome AI Apps, OPDERwanda, EMEA NetAcad Cup Learn-a-thon
+- RSSB Project, Store Management System, Nicolas in Dubai, MNDA Rwanda
 
 ---
 
@@ -476,6 +476,8 @@ server {
 ```bash
 cd backend
 go test ./... -v
+
+
 ```
 
 ### Frontend Tests
@@ -562,3 +564,43 @@ For questions or support, contact the development team at **dev@kcoders.org**
 For questions or support, contact the development team at **dev@kcoders.org**
 
 
+# How to Start both kcoders-portal/backend/ and kcoders-portal/frontend/
+
+## 1. Start PostgreSQL (Docker)
+
+```bash
+cd kcoders-portal
+
+# Start the PostgreSQL database container
+docker compose up -d postgres
+
+# Verify it's running
+docker ps | grep kcoders-db
+```
+
+> The database runs on `localhost:5433` as defined in `docker-compose.yml`.
+
+## 2. Backend (Go/Gin)
+
+```bash
+cd kcoders-portal/backend
+
+# Run the server
+go run cmd/server/main.go
+
+# Backend runs on http://localhost:5003
+```
+
+## 3. Frontend (Next.js)
+
+```bash
+cd kcoders-portal/frontend
+
+# Development mode
+npm run dev
+
+# OR production mode
+npm run build && npm run start
+
+# Frontend runs on http://localhost:3003
+```
