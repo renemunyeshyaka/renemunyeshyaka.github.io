@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Kcoders Portal - Software Development Services',
   description: 'Professional Software Development, DevOps & Cybersecurity Consulting',
   keywords: 'kcoders, software development, DevOps, cybersecurity, Rwanda, web development',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({

@@ -38,7 +38,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 text-blue-200 text-sm font-medium mb-6 backdrop-blur-sm border border-white/10">
               By Jean René MUNYESHYAKA
@@ -68,8 +68,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-overlay filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-500/20 rounded-full mix-blend-overlay filter blur-3xl"></div>
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-overlay filter blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-500/20 rounded-full mix-blend-overlay filter blur-3xl pointer-events-none"></div>
       </section>
 
       {/* Projects */}
