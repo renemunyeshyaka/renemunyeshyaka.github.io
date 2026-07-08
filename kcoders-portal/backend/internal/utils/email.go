@@ -1,10 +1,13 @@
 package utils
 
 import (
+	"crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"net/smtp"
 	"os"
 	"strings"
+	"time"
 )
 
 type EmailConfig struct {
@@ -33,6 +36,12 @@ func GetEmailConfig() *EmailConfig {
 	}
 }
 
+func generateMessageID() string {
+	b := make([]byte, 16)
+	rand.Read(b)
+	return fmt.Sprintf("<%s@kcoders.org>", hex.EncodeToString(b))
+}
+
 func SendEmail(to, subject, body string) error {
 	cfg := GetEmailConfig()
 
@@ -42,6 +51,9 @@ func SendEmail(to, subject, body string) error {
 	headers["Subject"] = subject
 	headers["MIME-Version"] = "1.0"
 	headers["Content-Type"] = "text/html; charset=\"UTF-8\""
+	headers["Message-ID"] = generateMessageID()
+	headers["Date"] = time.Now().Format(time.RFC1123Z)
+	headers["List-Unsubscribe"] = "<mailto:unsubscribe@kcoders.org>"
 
 	var headerStr string
 	for k, v := range headers {
